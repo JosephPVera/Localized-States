@@ -77,8 +77,8 @@ class EigenvaluesPlotter:
 
         # Subplot Spin down
         axs[1].scatter(kpoint_vals_down, rescale_down, color=colors_down, label='Spin Down', s=30)
-        axs[1].set_xlabel('K-point coordinates', fontsize=12)
-        axs[1].set_title('Spin down', fontsize=12)
+        axs[1].set_xlabel('K-point coordinates', fontsize=14)
+        axs[1].set_title('Spin down', fontsize=14)
         axs[1].tick_params(axis='y', which='both', left=True, right=False, labelleft=False)
         axs[1].set_xlim(min(kpoint_vals_down) - 0.5, max(kpoint_vals_down) + 0.5)
         axs[1].set_ylim(self.vbm - 1.7945 - self.res, self.cbm + 1.7551 - self.res)

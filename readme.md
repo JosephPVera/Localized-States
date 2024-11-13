@@ -13,3 +13,6 @@ Plot the below figures with [locplot.py](https://github.com/JosephPVera/Localize
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Spin_up-kpoint_1.png)
 2. Spind down
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Spin_down-kpoint_1.png)
+
+## Neighbors of the defect
+Checks if the localized states belong to ions that are close to or neighboring the defect. Check the example [neighbor_atoms.dat](https://github.com/JosephPVera/Localized-States/blob/main/tests/neighbor_atoms.dat) file.

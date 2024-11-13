@@ -43,6 +43,9 @@ if not os.path.exists(localized_folder):
 output_file = os.path.join(localized_folder, f'localized_{folder_name}.dat')
 
 with open(output_file, 'w') as f:
+    f.write(f"Defect: {folder_name}\n")
+    f.write(f"\nVBM = {vbm} eV\n")  # Replace vbm with actual value
+    f.write(f"CBM = {cbm} eV\n\n\n")
     f.write("###########################################################\n")
     f.write("           vasprun.xml file (EIGENVAL information)                            \n")
     f.write("###########################################################\n")

@@ -70,6 +70,9 @@ class LocalizedPlotter:
             occupied_patch = plt.Line2D([0], [0], marker='o', color='w', label='Occupied', markerfacecolor='blue', markersize=10)
             unoccupied_patch = plt.Line2D([0], [0], marker='o', color='w', label='Unoccupied', markerfacecolor='red', markersize=10)
             partially_occupied_patch = plt.Line2D([0], [0], marker='o', color='w', label='Partially occupied', markerfacecolor='green', markersize=10)
+            vbm_patch = plt.Line2D([0], [0], color='lightblue', label='VBM')
+            cbm_patch = plt.Line2D([0], [0], color='thistle', label='CBM')
+            plt.legend(handles=[occupied_patch, unoccupied_patch, partially_occupied_patch, vbm_patch, cbm_patch])
             plt.legend(handles=[occupied_patch, unoccupied_patch, partially_occupied_patch])
 
             plt.axvspan(subset['Energy'].min() - 0.9, self.vbm, color='lightblue', alpha=0.4)

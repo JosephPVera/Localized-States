@@ -72,3 +72,15 @@ Plot the below figures with [locplot.py](https://github.com/JosephPVera/Localize
 
 ## Neighbors of the defect
 Use the [defects.py](https://github.com/JosephPVera/Localized-States/blob/main/defects.py) script to checks if the localized states belong to ions that are close to or neighboring the defect. Check the example [neighbor_atoms.dat](https://github.com/JosephPVera/Localized-States/blob/main/tests/neighbor_atoms.dat) file.
+   ```bash
+   Vacancy: V_N
+   Index in ../perfect/POSCAR: 149
+   Position: [0.58333333 0.58333333 0.41666667]
+
+   Closest neighbors to the V_N defect in Va_N1_2/POSCAR:
+   Index      Atom       Position                       Distance (A)
+   41         B          0.500000 0.500000 0.333333     1.5699    
+   71         B          0.500000 0.666667 0.500000     1.5699    
+   104        B          0.666667 0.500000 0.500000     1.5699    
+   26         B          0.666667 0.666667 0.333333     1.5699 
+   ```

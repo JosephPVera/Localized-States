@@ -1,5 +1,16 @@
 # Localized States in Point Defects (LSPD)
 ----
+## 1. Guide to reading files in relation to figures
+### 1.1. Kohn-Sham states
+![Alt text](https://github.com/JosephPVera/Investigation-cBN/blob/main/DFT%20calculations/Point-defects/PBE/screnning-defects/Guide/images/guide.png)
+
+### 1.2. Localized states
+1. Spin up
+![Alt text](https://github.com/JosephPVera/Investigation-cBN/blob/main/DFT%20calculations/Point-defects/PBE/screnning-defects/Guide/images/Spin_up-kpoint_1.png)
+2. Spind down
+![Alt text](https://github.com/JosephPVera/Investigation-cBN/blob/main/DFT%20calculations/Point-defects/PBE/screnning-defects/Guide/images/Spin_down-kpoint_4.png)
+
+
 ## Kohn-Sham states
 Plot the Kohn-Sham states with [eigenplot.py](https://github.com/JosephPVera/Localized-States/blob/main/eigenplot.py).
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/kohn-sham-states.png)

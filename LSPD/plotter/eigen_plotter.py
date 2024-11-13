@@ -65,9 +65,9 @@ class EigenvaluesPlotter:
         
         # Subplot Spin up
         axs[0].scatter(kpoint_vals_up, rescale_up, color=colors_up, label='Spin Up', s=30)
-        axs[0].set_xlabel('K-point coordinates', fontsize=12)
-        axs[0].set_title('Spin up', fontsize=12)
-        axs[0].set_ylabel('Energy (eV)', fontsize=12)
+        axs[0].set_xlabel('K-point coordinates', fontsize=14)
+        axs[0].set_title('Spin up', fontsize=14)
+        axs[0].set_ylabel('Energy (eV)', fontsize=14)
         axs[0].set_xlim(min(kpoint_vals_up) - 0.5, max(kpoint_vals_up) + 0.5)
         axs[0].set_ylim(self.vbm - 1.7945 - self.res, self.cbm + 1.7551 - self.res)
         axs[0].axhspan(self.vbm - self.res, self.vbm - 1.7945 - self.res, color='lightblue', alpha=0.4)

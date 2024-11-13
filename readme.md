@@ -84,3 +84,10 @@ Use the [defects.py](https://github.com/JosephPVera/Localized-States/blob/main/d
    104        B          0.666667 0.500000 0.500000     1.5699    
    26         B          0.666667 0.666667 0.333333     1.5699 
    ```
+
+
+---
+# Enjoy your outcomes
+---
+# Disfruta tus resultados
+---

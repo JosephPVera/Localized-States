@@ -77,12 +77,12 @@ class LocalizedPlotter:
             plt.axvspan(subset['Energy'].min() - 0.9, self.vbm, color='lightblue', alpha=0.4)
             plt.axvspan(self.cbm, subset['Energy'].max() + 0.9, color='thistle', alpha=0.4)
 
-            plt.xlabel('Energy (eV)')
-            plt.ylabel('Localization')
+            plt.xlabel('Energy (eV)', fontsize=14)
+            plt.ylabel('Localization', fontsize=14)
             plt.xlim(subset['Energy'].min() - 0.9, subset['Energy'].max() + 0.9)
 
             if spin == 1:
-                plt.title(f'Spin up - kpoint {kpoint}')
+                plt.title(f'Spin up - kpoint {kpoint}', fontsize=14)
                 plot_filename = f'Spin_up-kpoint_{kpoint}.png'
                 output_file = os.path.join(localized_folder, plot_filename)
             else:

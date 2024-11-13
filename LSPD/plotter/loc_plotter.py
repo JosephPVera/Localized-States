@@ -73,7 +73,6 @@ class LocalizedPlotter:
             vbm_patch = plt.Line2D([0], [0], color='lightblue', label='VBM')
             cbm_patch = plt.Line2D([0], [0], color='thistle', label='CBM')
             plt.legend(handles=[occupied_patch, unoccupied_patch, partially_occupied_patch, vbm_patch, cbm_patch])
-            plt.legend(handles=[occupied_patch, unoccupied_patch, partially_occupied_patch])
 
             plt.axvspan(subset['Energy'].min() - 0.9, self.vbm, color='lightblue', alpha=0.4)
             plt.axvspan(self.cbm, subset['Energy'].max() + 0.9, color='thistle', alpha=0.4)

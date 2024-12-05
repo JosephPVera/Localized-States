@@ -6,12 +6,6 @@ from LSPD.reader.reader import VasprunReader
 from LSPD.analyzer.main_variables import VariablesExtractor
 from LSPD.analyzer.get_results import ResultsExtractor
 from LSPD.plotter.ipr_plotter import IPRPlotter
-import time
-
-#from LSPD.arg.commands import CommandLineArgs
-
-# Use --tot command for plot: Energy versus tot column (PROCAR). By default plot: Energy versus sum (the 5 heaviest values from tot (each band)).
-#args = CommandLineArgs()
 
 # Variables following the valence band maximum (VBM) and conduction band minimum (CBM).
 vbm = 7.2945  

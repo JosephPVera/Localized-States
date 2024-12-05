@@ -2,11 +2,14 @@
 # 2024-11
 
 from LSPD.reader.reader import VasprunReader
+from vaspwfc import vaspwfc
+import numpy as np
 
 class ResultsExtractor:
-    def __init__(self, spin_numbers, kpoint_numbers, band_numbers, xml_reader="vasprun.xml"):
+    def __init__(self, spin_numbers, kpoint_numbers, band_numbers, xml_reader="vasprun.xml", wav_file="WAVECAR"):
         self.xml_reader = VasprunReader(xml_reader)
         self.root = self.xml_reader.get_root()
+        self.wav_file = wav_file
         self.spin_numbers = spin_numbers
         self.kpoint_numbers = kpoint_numbers
         self.band_numbers = band_numbers
@@ -62,6 +65,35 @@ class ResultsExtractor:
                             self.energy_values.append(block_values)
                         if block_occu:
                             self.occupancy_list.append(block_occu)
+    
+    def IPR(self):
+        # Initialize the VASP wavefunction object
+        wfc = vaspwfc(self.wav_file)
+    
+        if wfc._nspin == 2:
+            spins = [1, 2]  # Spin-polarized calculation
+        else:
+            spins = [1]  # Non-spin-polarized calculation
+
+        self.results.append(f"{'Spin':<6} {'k-point':<10} {'Band':<10} {'IPR':<10}")
+
+        # Loop through all spins, k-points, and bands to calculate IPR
+        for spin in spins:
+            for k in range(wfc._nkpts):  # k-points
+                for b in range(wfc._nbands):  # number of bands
+                    # Extract the real-space wavefunction for the current spin, k-point, and band
+                    psi_r = wfc.wfc_r(ispin=spin, ikpt=k+1, iband=b+1)
+                
+                    # Calculate |psi(r)|^2
+                    psi_squared = np.abs(psi_r)**2
+                
+                    # Calculate the numerator and denominator for IPR
+                    ipr_numerator = np.sum(psi_squared**2)  # Sum of |\Psi(r)|^4
+                    ipr_denominator = np.sum(psi_squared)**2  # (Sum of |\Psi(r)|^2)^2
+                
+                    ipr_value = ipr_numerator / ipr_denominator
+                
+                    self.results.append(f"{spin:<6} {k+1:<10} {b+1:<10} {ipr_value:<10.6f}")
 
     def create_total_results(self):
         "Create the total results with energy and occupancy values."

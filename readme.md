@@ -2,11 +2,11 @@
 ----
 ## 1. Guide to reading files in relation to figures
 ### 1.1. Kohn-Sham states
-![Alt text](https://github.com/JosephPVera/Investigation-cBN/blob/main/DFT%20calculations/Point-defects/PBE/screnning-defects/Guide/images/guide.png)
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Guide/Figures/guide.png)
 
 ### 1.2. Localized states
-![Alt text](https://github.com/JosephPVera/Investigation-cBN/blob/main/DFT%20calculations/Point-defects/PBE/screnning-defects/Guide/images/Spin_up-kpoint_1.png)
-![Alt text](https://github.com/JosephPVera/Investigation-cBN/blob/main/DFT%20calculations/Point-defects/PBE/screnning-defects/Guide/images/Spin_down-kpoint_4.png)
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Guide/Figures/Spin_up-kpoint_1.png)
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Guide/Figures/Spin_down-kpoint_4.png)
 
 ## 2. Usage
 ### 2.1. Kohn-Sham states

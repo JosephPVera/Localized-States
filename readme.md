@@ -1,6 +1,9 @@
 # Localized States in Point Defects (LSPD)
 ----
-**_NOTE:_** Motivation: Working with point defects involves using supercells (sometimes too larges), which can be a challenge in terms of information processing. Performing the analysis manually for each defect with several charges states is tedious (time consuming). Luckely, programming can help us with that.
+**_NOTE:_** 
+
+Motivation: Working with point defects involves using supercells (sometimes too larges), which can be a challenge in terms of information processing. Performing the analysis manually for each defect with several charges states is tedious (time consuming). Luckely, programming can help us with that.
+
 ----
 The package contains a serie of scripts designed to perform a post-analysis when working with point defects in VASP. Their main functionalities are focused on:
 - Plotting the Kohn-Sham states

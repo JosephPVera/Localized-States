@@ -8,13 +8,14 @@ import matplotlib.pyplot as plt
 from io import StringIO
 
 class LocalizedPlotter:
-    def __init__(self, spin_numbers, kpoint_numbers, vbm, cbm, tot_mode, band_mode=False):
+    def __init__(self, spin_numbers, kpoint_numbers, vbm, cbm, tot_mode, band_mode=False, res=0.0):
         self.spin_numbers = spin_numbers
         self.kpoint_numbers = kpoint_numbers
         self.vbm = vbm  
         self.cbm = cbm  
         self.tot_mode = tot_mode 
         self.band_mode = band_mode 
+        self.res = res
         self.final_result = []
 
     def store_final_results(self, total_results):
@@ -59,10 +60,12 @@ class LocalizedPlotter:
             spin = self.spin_numbers[spin_index]
             kpoint = self.kpoint_numbers[kpoint_index]
 
-            # Filter band numbers within the gap
-            gap_data = data[(data[5] >= self.vbm) & (data[5] <= self.cbm)]  
+            # Rescale the energy values
+            rescaled_energy = [valor - self.res for valor in data[5]]
+
+            gap_data = data[(np.array(rescaled_energy) >= self.vbm - self.res) & (np.array(rescaled_energy) <= self.cbm - self.res)]  
             band_numbers = gap_data[2].values  
-            energies = gap_data[5].values  
+            energies = np.array(rescaled_energy)[(np.array(rescaled_energy) >= self.vbm - self.res) & (np.array(rescaled_energy) <= self.cbm - self.res)]
 
             printed_bands = set()  # Track printed bands to avoid duplication
 
@@ -70,18 +73,18 @@ class LocalizedPlotter:
             plt.figure(figsize=(10, 6))
 
             # Scatter points with band numbers next to them
-            for j, (energy, sum_val, occ, band) in enumerate(zip(data[5], data[3] if self.tot_mode else data[4], data[6], data[2])):
+            for j, (energy, sum_val, occ, band) in enumerate(zip(rescaled_energy, data[3] if self.tot_mode else data[4], data[6], data[2])):
                 if np.isfinite(sum_val):
                     color = 'blue' if occ > 0.9 else 'red' if occ < 0.1 else 'green'
                     plt.scatter(energy, sum_val, marker='o', color=color)
                     
                     if self.band_mode:
                     # Check if the point is within the gap
-                        if self.vbm <= energy <= self.cbm:
+                        if self.vbm - self.res <= energy <= self.cbm - self.res:
                         # Group similar band numbers
                             similar_bands = [band]
                             for energy2, band2 in zip(energies, band_numbers):
-                                if abs(energy - energy2) <= 0.1 and band != band2 and self.vbm <= energy2 <= self.cbm:
+                                if abs(energy - energy2) <= 0.1 and band != band2 and self.vbm - self.res <= energy2 <= self.cbm - self.res:
                                     similar_bands.append(band2)
                         
                         # Sort and remove duplicates
@@ -103,12 +106,12 @@ class LocalizedPlotter:
             plt.legend(handles=[occupied_patch, unoccupied_patch, partially_occupied_patch, vbm_patch, cbm_patch])
 
             # VBM and CBM shading
-            plt.axvspan(subset['Energy'].min() - 0.9, self.vbm, color='lightblue', alpha=0.4)
-            plt.axvspan(self.cbm, subset['Energy'].max() + 0.9, color='thistle', alpha=0.4)
+            plt.axvspan(subset['Energy'].min() - 0.9 - self.res, self.vbm - self.res, color='lightblue', alpha=0.4)
+            plt.axvspan(self.cbm - self.res, subset['Energy'].max() + 0.9  + self.res, color='thistle', alpha=0.4)
 
             plt.xlabel('Energy (eV)', fontsize=14)
             plt.ylabel('Localization', fontsize=14)
-            plt.xlim(subset['Energy'].min() - 0.9, subset['Energy'].max() + 0.9)
+            plt.xlim(subset['Energy'].min() - 0.9 - self.res, subset['Energy'].max() + 0.9 - self.res)
 
             # Title and Save Plot
             if spin == 1:

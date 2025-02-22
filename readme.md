@@ -20,7 +20,7 @@ The package contains a serie of scripts designed to perform a post-analysis when
 
 ## 2. Usage
 ### 2.1. Kohn-Sham states
-Plot the Kohn-Sham states with [eigenplot.py](https://github.com/JosephPVera/Localized-States/blob/main/eigenplot.py).
+Plot the Kohn-Sham states with [eigenplot.py](https://github.com/JosephPVera/Localized-States/blob/main/eigenplot.py). Check the script to use rescaling, it can be changed to res = 0 or res = vbm.
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/kohn-sham-states.png)
 
 ### 2.2. Localized states

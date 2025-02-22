@@ -20,8 +20,10 @@ The package contains a serie of scripts designed to perform a post-analysis when
 
 ## 2. Usage
 ### 2.1. Kohn-Sham states
-Plot the Kohn-Sham states with [eigenplot.py](https://github.com/JosephPVera/Localized-States/blob/main/eigenplot.py). Check the script to use rescaling, it can be changed to res = 0 or res = vbm.
+Plot the Kohn-Sham states with [eigenplot.py](https://github.com/JosephPVera/Localized-States/blob/main/eigenplot.py). Check the script to use rescaling, it can be changed to **res = 0** or **res = vbm**.
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/kohn-sham-states.png)
+Use the **--band** tag to include band numbers in the gap.
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/kohn-sham-states-band.png)
 
 ### 2.2. Localized states
 Get information within the gap with [localized.py](https://github.com/JosephPVera/Localized-States/blob/main/localized.py) (it can be extended by modifying VBM and CBM). Check the example [localized_Va_N1_2.dat](https://github.com/JosephPVera/Localized-States/blob/main/tests/localized_Va_N1_2.dat) file.

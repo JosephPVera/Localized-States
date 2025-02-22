@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
 # Written by Joseph P.Vera
-# 2024-11
+# 2025-02
 
 from LSPD.reader.reader import VasprunReader
 from LSPD.analyzer.main_variables import VariablesExtractor
 from LSPD.analyzer.get_results import ResultsExtractor
 from LSPD.plotter.eigen_plotter import EigenvaluesPlotter
+from LSPD.arg.commands import CommandLineArgs
 
 "Plot the Kohn-Sham states"
 
+args = CommandLineArgs()
+
 # Variables following the valence band maximum (VBM) and conduction band minimum (CBM).
-vbm = 7.2945  
-cbm = 11.7449
+vbm = 6.7056 # AEXX = 0.25 (AEXX = 0.33 --> 6.4979)  
+cbm = 12.5198 # AEXX = 0.25 (AEXX = 0.33 --> 12.7609)
 
 # res is optional to rescale the Kohn-Sham (eigenvalues) plot with respect to VBM, it may also be off.
-res = vbm
+res = 0
 
 # Read the file
 xml_reader = VasprunReader("vasprun.xml")
@@ -42,7 +45,7 @@ vasp_data.extract_kpoint_coordinates()
 vasp_data.generate_x_labels()
 
 # Prepare the plotter by declaring its variables
-plotter = EigenvaluesPlotter(vbm, cbm, vasp_data.kpoint_numbers, vasp_data.generate_x_labels, res)
+plotter = EigenvaluesPlotter(vbm, cbm, vasp_data.kpoint_numbers, vasp_data.generate_x_labels, res, args.band_mode)
 
 # Use the total_results list to plot
 plotter.store_final_results(total_results)

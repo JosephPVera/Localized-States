@@ -1,5 +1,5 @@
 # Written by Joseph P.Vera
-# 2024-11
+# 2025-02
 
 import argparse
 
@@ -9,12 +9,13 @@ class CommandLineArgs:
         
         # Basic plotting options
         self.parser.add_argument('--tot', action='store_true', help="Use the 'tot' mode for plotting")
+        self.parser.add_argument('--band', action='store_true', help="Display band numbers on the plot")
         self.args = self.parser.parse_args()
-
 
     @property
     def tot_mode(self):
         return self.args.tot
-    
 
-    
+    @property
+    def band_mode(self):
+        return self.args.band

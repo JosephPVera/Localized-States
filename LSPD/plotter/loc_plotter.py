@@ -1,5 +1,5 @@
 # Written by Joseph P.Vera
-# 2024-11
+# 2025-02
 
 import os
 import numpy as np
@@ -8,12 +8,13 @@ import matplotlib.pyplot as plt
 from io import StringIO
 
 class LocalizedPlotter:
-    def __init__(self, spin_numbers, kpoint_numbers, vbm, cbm, tot_mode):
+    def __init__(self, spin_numbers, kpoint_numbers, vbm, cbm, tot_mode, band_mode=False):
         self.spin_numbers = spin_numbers
         self.kpoint_numbers = kpoint_numbers
         self.vbm = vbm  
         self.cbm = cbm  
-        self.tot_mode = tot_mode  
+        self.tot_mode = tot_mode 
+        self.band_mode = band_mode 
         self.final_result = []
 
     def store_final_results(self, total_results):
@@ -58,13 +59,40 @@ class LocalizedPlotter:
             spin = self.spin_numbers[spin_index]
             kpoint = self.kpoint_numbers[kpoint_index]
 
+            # Filter band numbers within the gap
+            gap_data = data[(data[5] >= self.vbm) & (data[5] <= self.cbm)]  
+            band_numbers = gap_data[2].values  
+            energies = gap_data[5].values  
+
+            printed_bands = set()  # Track printed bands to avoid duplication
+
             # Plotting
             plt.figure(figsize=(10, 6))
 
-            for j in range(len(subset['sum'])):
-                if np.isfinite(subset['sum'].iloc[j]):
-                    color = 'blue' if subset['occ'].iloc[j] > 0.9 else 'red' if subset['occ'].iloc[j] < 0.1 else 'green'
-                    plt.scatter(subset['Energy'].iloc[j], subset['sum'].iloc[j], marker='o', color=color)
+            # Scatter points with band numbers next to them
+            for j, (energy, sum_val, occ, band) in enumerate(zip(data[5], data[3] if self.tot_mode else data[4], data[6], data[2])):
+                if np.isfinite(sum_val):
+                    color = 'blue' if occ > 0.9 else 'red' if occ < 0.1 else 'green'
+                    plt.scatter(energy, sum_val, marker='o', color=color)
+                    
+                    if self.band_mode:
+                    # Check if the point is within the gap
+                        if self.vbm <= energy <= self.cbm:
+                        # Group similar band numbers
+                            similar_bands = [band]
+                            for energy2, band2 in zip(energies, band_numbers):
+                                if abs(energy - energy2) <= 0.1 and band != band2 and self.vbm <= energy2 <= self.cbm:
+                                    similar_bands.append(band2)
+                        
+                        # Sort and remove duplicates
+                            similar_bands_sorted = sorted(set(similar_bands))
+                        
+                        # Only print once per unique set of band numbers
+                            if tuple(similar_bands_sorted) not in printed_bands:
+                                printed_bands.add(tuple(similar_bands_sorted))
+                            # Label next to scatter point
+                                plt.text(energy + 0.6, sum_val, ', '.join(map(str, similar_bands_sorted)), 
+                                         fontsize=10, color='black')
 
             # Legend
             occupied_patch = plt.Line2D([0], [0], marker='o', color='w', label='Occupied', markerfacecolor='blue', markersize=10)
@@ -74,6 +102,7 @@ class LocalizedPlotter:
             cbm_patch = plt.Line2D([0], [0], color='thistle', label='CBM')
             plt.legend(handles=[occupied_patch, unoccupied_patch, partially_occupied_patch, vbm_patch, cbm_patch])
 
+            # VBM and CBM shading
             plt.axvspan(subset['Energy'].min() - 0.9, self.vbm, color='lightblue', alpha=0.4)
             plt.axvspan(self.cbm, subset['Energy'].max() + 0.9, color='thistle', alpha=0.4)
 
@@ -81,6 +110,7 @@ class LocalizedPlotter:
             plt.ylabel('Localization', fontsize=14)
             plt.xlim(subset['Energy'].min() - 0.9, subset['Energy'].max() + 0.9)
 
+            # Title and Save Plot
             if spin == 1:
                 plt.title(f'Spin up - kpoint {kpoint}', fontsize=14)
                 plot_filename = f'Spin_up-kpoint_{kpoint}.png'
@@ -91,5 +121,4 @@ class LocalizedPlotter:
                 output_file = os.path.join(localized_folder, plot_filename)      
             plt.savefig(output_file, bbox_inches='tight', dpi=150)
             plt.close()
-#            print("Saving figures ... ")
             print(f"Saved figure: {output_file}")

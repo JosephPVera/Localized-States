@@ -27,7 +27,7 @@ Use the **--band** tag to include band numbers in the gap.
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/kohn-sham-states-band.png)
 
 ### 2.2. Visualize the localized states
-Plot the below figures with [locplot.py](https://github.com/JosephPVera/Localized-States/blob/main/locplot.py). The **locplot.py** script takes the sum of the 5 heaviest values (most contribution) ​​in each band per k-point (Energy versus sum), it also can be change for check the total contribution (tot) for each band per k-point (Energy versus tot) using the **--tot** tag. Once again, you can change the scale to **res = 0** or **res = vbm**.
+Plot the below figures with [locplot.py](https://github.com/JosephPVera/Localized-States/blob/main/locplot.py). The **locplot.py** script takes the sum of the 5 heaviest values (most contribution) ​​in each band per k-point (Energy versus sum), it also can be change for check the total contribution (tot) for each band per k-point (Energy versus tot) using the **--tot** tag. Once again, you can change the scale via **res = 0** or **res = vbm**.
 1. Spin up
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Spin_up-kpoint_1.png)
 2. Spind down

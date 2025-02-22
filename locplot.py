@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Written by Joseph P.Vera
-# 2024-11
+# 2025-02
 
 from LSPD.reader.reader import VasprunReader
 from LSPD.analyzer.main_variables import VariablesExtractor
@@ -14,8 +14,8 @@ from LSPD.arg.commands import CommandLineArgs
 args = CommandLineArgs()
 
 # Variables following the valence band maximum (VBM) and conduction band minimum (CBM).
-vbm = 7.2945  
-cbm = 11.7449
+vbm = 6.7056 # AEXX = 0.25 (AEXX = 0.33 --> 6.4979)  
+cbm = 12.5198 # AEXX = 0.25 (AEXX = 0.33 --> 12.7609)
 
 # Read the file
 xml_reader = VasprunReader("vasprun.xml")
@@ -39,7 +39,7 @@ results_extractor.extract_energy_occupancy()
 total_results = results_extractor.create_total_results()
 
 # Prepare the plotter by declaring its variables
-plotter = LocalizedPlotter(vasp_data.spin_numbers, vasp_data.kpoint_numbers, vbm, cbm, args.tot_mode)
+plotter = LocalizedPlotter(vasp_data.spin_numbers, vasp_data.kpoint_numbers, vbm, cbm, args.tot_mode, args.band_mode)
 
 # Use the total_results list to plot
 plotter.store_final_results(total_results)

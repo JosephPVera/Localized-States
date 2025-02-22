@@ -1,18 +1,19 @@
 # Written by Joseph P.Vera
-# 2024-11
+# 2025-02
 
 import pandas as pd
 import matplotlib.pyplot as plt
 from io import StringIO
 
 class EigenvaluesPlotter:
-    def __init__(self, vbm, cbm, kpoint_coordinates, generate_x_labels, res=0.0):
+    def __init__(self, vbm, cbm, kpoint_coordinates, generate_x_labels, res=0.0, band_mode=False):
         self.final_result = []
         self.vbm = vbm 
         self.cbm = cbm 
         self.res = res
         self.kpoint_coordinates = kpoint_coordinates 
         self.generate_x_labels = generate_x_labels
+        self.band_mode = band_mode  # Store the band_mode value
 
     def store_final_results(self, total_results):
         "Store total results into final results."
@@ -30,12 +31,22 @@ class EigenvaluesPlotter:
         kpoint_vals_up, energy_vals_up, colors_up = [], [], []
         kpoint_vals_down, energy_vals_down, colors_down = [], [], []
 
+        band_numbers_up, band_numbers_down = [], []  # Para almacenar los números de banda
+        printed_bands_up, printed_bands_down = set(), set()
+
         for i, block in enumerate(blocks):
             data = pd.read_csv(StringIO(block), sep=r'\s+', header=None)
 
+            """Column 0 ----> spin number, \
+             Column 1 ----> kpoint number, \
+             Column 2 ----> band number, \
+             Column 3 ----> tot, \
+             Column 4 ----> sum, \
+             Column 5 ----> Energy, \
+             Column 6 ----> occupancies"""
             if data.shape[1] >= 7:
-                subset = data.iloc[:, [1, 5, 6]]
-                subset.columns = ['kpoint', 'Energy', 'occ']
+                subset = data.iloc[:, [1, 5, 6, 2]]  # Include band number (column 2)
+                subset.columns = ['kpoint', 'Energy', 'occ', 'band']
 
                 occupancy = subset['occ'].to_list()
                 rupture_point = next((j for j, val in enumerate(occupancy) if val < 1.0), None)
@@ -44,15 +55,18 @@ class EigenvaluesPlotter:
                     kpoint_vals = subset['kpoint'][rupture_point - 14:rupture_point + 11].to_list()
                     energy_vals = subset['Energy'][rupture_point - 14:rupture_point + 11].to_list()
                     occupancy_group = occupancy[rupture_point - 14:rupture_point + 11]
+                    band_numbers = subset['band'][rupture_point - 14:rupture_point + 11].to_list()
 
                     if i < num_blocks // 2:
                         kpoint_vals_up.extend(kpoint_vals)
                         energy_vals_up.extend(energy_vals)
                         colors_up.extend(['blue' if val > 0.9 else 'red' if val < 0.1 else 'green' for val in occupancy_group])
+                        band_numbers_up.extend(band_numbers)
                     else:
                         kpoint_vals_down.extend(kpoint_vals)
                         energy_vals_down.extend(energy_vals)
                         colors_down.extend(['blue' if val > 0.9 else 'red' if val < 0.1 else 'green' for val in occupancy_group])
+                        band_numbers_down.extend(band_numbers)
 
         rescale_up = [valor - self.res for valor in energy_vals_up]
         rescale_down = [valor - self.res for valor in energy_vals_down]
@@ -75,6 +89,23 @@ class EigenvaluesPlotter:
         axs[0].set_xticks(unique_kpoints)
         axs[0].set_xticklabels(x_tick_labels, rotation=0, fontsize=8, size=10)
 
+        # Solo mostrar band numbers dentro del band gap si 'band_mode' está activado
+        if self.band_mode:
+            # Annotate band numbers for points within band gap (Spin Up)
+            for kpt, energy, band in zip(kpoint_vals_up, rescale_up, band_numbers_up):
+                if self.vbm <= energy <= self.cbm:
+                # Group band numbers with similar energies (within tolerance)
+                    similar_bands = [band]
+                    for kpt2, energy2, band2 in zip(kpoint_vals_up, rescale_up, band_numbers_up):
+                        if abs(energy - energy2) <= 0.1 and band != band2 and self.vbm <= energy2 <= self.cbm:
+                            similar_bands.append(band2)
+                
+                # Ensure we print only once per unique set of similar band numbers
+                    similar_bands_sorted = sorted(set(similar_bands))
+                    if tuple(similar_bands_sorted) not in printed_bands_up:
+                        printed_bands_up.add(tuple(similar_bands_sorted))
+                        axs[0].text(kpt + 0.05, energy, ', '.join(map(str, similar_bands_sorted)), fontsize=10, color='black')
+
         # Subplot Spin down
         axs[1].scatter(kpoint_vals_down, rescale_down, color=colors_down, label='Spin Down', s=30)
         axs[1].set_xlabel('K-point coordinates', fontsize=14)
@@ -86,6 +117,23 @@ class EigenvaluesPlotter:
         axs[1].axhspan(self.cbm - self.res, self.cbm + 1.7551 - self.res, color='thistle', alpha=0.4)
         axs[1].set_xticks(unique_kpoints)
         axs[1].set_xticklabels(x_tick_labels, rotation=0, fontsize=8, size=10)
+
+        # Solo mostrar band numbers dentro del band gap si 'band_mode' está activado
+        if self.band_mode:
+        # Annotate band numbers for points within band gap (Spin Down)
+            for kpt, energy, band in zip(kpoint_vals_down, rescale_down, band_numbers_down):
+                if self.vbm <= energy <= self.cbm:
+                # Group band numbers with similar energies (within tolerance)
+                    similar_bands = [band]
+                    for kpt2, energy2, band2 in zip(kpoint_vals_down, rescale_down, band_numbers_down):
+                        if abs(energy - energy2) <= 0.1 and band != band2 and self.vbm <= energy2 <= self.cbm:
+                            similar_bands.append(band2)
+                
+                # Ensure we print only once per unique set of similar band numbers
+                    similar_bands_sorted = sorted(set(similar_bands))
+                    if tuple(similar_bands_sorted) not in printed_bands_down:
+                        printed_bands_down.add(tuple(similar_bands_sorted))
+                        axs[1].text(kpt + 0.05, energy, ', '.join(map(str, similar_bands_sorted)), fontsize=10, color='black')
 
         occupied_patch = plt.Line2D([0], [0], marker='o', color='w', label='Occupied', markerfacecolor='blue', markersize=10)
         unoccupied_patch = plt.Line2D([0], [0], marker='o', color='w', label='Unoccupied', markerfacecolor='red', markersize=10)

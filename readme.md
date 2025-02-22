@@ -40,7 +40,7 @@ Use the **--band** tag to include band numbers in the gap.
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Spin_down-kpoint_1-band.png)
 
 ### 2.3. Localized states
-Review in detail which atoms (indexes) contribute to high localization in the gap with [localized.py](https://github.com/JosephPVera/Localized-States/blob/main/localized.py) (it can be extended by modifying VBM and CBM). Check the example [localized_Va_N1_2.dat](https://github.com/JosephPVera/Localized-States/blob/main/tests/localized_Va_N1_2.dat) file.
+Review in detail which atoms (indexes) contribute to the high localization of states at each band number in the gap with [localized.py](https://github.com/JosephPVera/Localized-States/blob/main/localized.py) (it can be extended by modifying VBM and CBM). Check the example [localized_Va_N1_2.dat](https://github.com/JosephPVera/Localized-States/blob/main/tests/localized_Va_N1_2.dat) file.
    ```bash
    Defect: Va_N1_2
 

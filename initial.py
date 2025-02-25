@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from LSPD.reader.reader import VASPXMLReader
+from LSPD.reader.reader import VasprunReader
 from LSPD.analyzer.main_variables import VariablesExtractor
 
 # Read the file

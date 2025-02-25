@@ -4,7 +4,7 @@ from LSPD.reader.reader import VasprunReader
 from LSPD.analyzer.main_variables import VariablesExtractor
 
 # Read the file
-xml_reader = VASPXMLReader("vasprun.xml")
+xml_reader = VasprunReader("vasprun.xml")
 
 # Prepare the vasprun.xml file to parse
 extractor = VariablesExtractor(xml_reader)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-from Localized.reader.reader import VASPXMLReader
-from Localized.analyzer.main_variables import VariablesExtractor
+from LSPD.reader.reader import VASPXMLReader
+from LSPD.analyzer.main_variables import VariablesExtractor
 
 # Read the file
 xml_reader = VASPXMLReader("vasprun.xml")

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from Localized.reader.reader import VASPXMLReader
 from Localized.analyzer.main_variables import VariablesExtractor
 

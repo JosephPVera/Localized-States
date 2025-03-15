@@ -76,19 +76,7 @@ class EigenvaluesPlotter:
 
         unique_kpoints = sorted(set(kpoint_vals_up + kpoint_vals_down))
         x_tick_labels = [kpoint_labels[unique_kpoints.index(kpt)] if kpt in unique_kpoints else '' for kpt in unique_kpoints]
-        
-        # Subplot Spin up
-        axs[0].scatter(kpoint_vals_up, rescale_up, color=colors_up, label='Spin Up', s=30)
-        axs[0].set_xlabel('K-point coordinates', fontsize=14)
-        axs[0].set_title('Spin up', fontsize=14)
-        axs[0].set_ylabel('Energy (eV)', fontsize=14)
-        axs[0].set_xlim(min(kpoint_vals_up) - 0.5, max(kpoint_vals_up) + 0.5)
-        axs[0].set_ylim(self.vbm - 1.7945 - self.res, self.cbm + 1.7551 - self.res)
-        axs[0].axhspan(self.vbm - self.res, self.vbm - 1.7945 - self.res, color='lightblue', alpha=0.4)
-        axs[0].axhspan(self.cbm - self.res, self.cbm + 1.7551 - self.res, color='thistle', alpha=0.4)
-        axs[0].set_xticks(unique_kpoints)
-        axs[0].set_xticklabels(x_tick_labels, rotation=0, fontsize=8, size=10)
-        
+
         if self.band_mode:
             printed_bands_per_kpoint_up = {}
             printed_bands_per_kpoint_down = {}
@@ -126,6 +114,18 @@ class EigenvaluesPlotter:
                     if similar_bands_sorted not in printed_bands_per_kpoint_down[kpt]:
                         printed_bands_per_kpoint_down[kpt].add(similar_bands_sorted)
                         axs[1].text(kpt + 0.05, energy, ', '.join(map(str, similar_bands_sorted)), fontsize=10, color='black')
+                        
+        # Subplot Spin up
+        axs[0].scatter(kpoint_vals_up, rescale_up, color=colors_up, label='Spin Up', s=30)
+        axs[0].set_xlabel('K-point coordinates', fontsize=14)
+        axs[0].set_title('Spin up', fontsize=14)
+        axs[0].set_ylabel('Energy (eV)', fontsize=14)
+        axs[0].set_xlim(min(kpoint_vals_up) - 0.5, max(kpoint_vals_up) + 0.5)
+        axs[0].set_ylim(self.vbm - 1.7945 - self.res, self.cbm + 1.7551 - self.res)
+        axs[0].axhspan(self.vbm - self.res, self.vbm - 1.7945 - self.res, color='lightblue', alpha=0.4)
+        axs[0].axhspan(self.cbm - self.res, self.cbm + 1.7551 - self.res, color='thistle', alpha=0.4)
+        axs[0].set_xticks(unique_kpoints)
+        axs[0].set_xticklabels(x_tick_labels, rotation=0, fontsize=8, size=10)
 
         # Subplot Spin down
         axs[1].scatter(kpoint_vals_down, rescale_down, color=colors_down, label='Spin Down', s=30)

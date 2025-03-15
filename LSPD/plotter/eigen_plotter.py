@@ -90,11 +90,9 @@ class EigenvaluesPlotter:
         axs[0].set_xticklabels(x_tick_labels, rotation=0, fontsize=8, size=10)
         
         if self.band_mode:
-            # Conjuntos para evitar imprimir bandas duplicadas por cada kpoint individualmente
             printed_bands_per_kpoint_up = {}
             printed_bands_per_kpoint_down = {}
             
-            # Agrupar bandas por kpoint y energía similar (Spin Up)
             for kpt, energy, band in zip(kpoint_vals_up, rescale_up, band_numbers_up):
                 if self.vbm - self.res <= energy <= self.cbm - self.res:
                     if kpt not in printed_bands_per_kpoint_up:
@@ -112,7 +110,6 @@ class EigenvaluesPlotter:
                         printed_bands_per_kpoint_up[kpt].add(similar_bands_sorted)
                         axs[0].text(kpt + 0.05, energy, ', '.join(map(str, similar_bands_sorted)), fontsize=10, color='black')
 
-            # Agrupar bandas por kpoint y energía similar (Spin Down)
             for kpt, energy, band in zip(kpoint_vals_down, rescale_down, band_numbers_down):
                 if self.vbm - self.res <= energy <= self.cbm - self.res:
                     if kpt not in printed_bands_per_kpoint_down:

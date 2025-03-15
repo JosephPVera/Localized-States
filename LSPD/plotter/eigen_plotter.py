@@ -1,5 +1,5 @@
 # Written by Joseph P.Vera
-# 2025-02
+# 2025-03
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -88,23 +88,47 @@ class EigenvaluesPlotter:
         axs[0].axhspan(self.cbm - self.res, self.cbm + 1.7551 - self.res, color='thistle', alpha=0.4)
         axs[0].set_xticks(unique_kpoints)
         axs[0].set_xticklabels(x_tick_labels, rotation=0, fontsize=8, size=10)
-
-        # Solo mostrar band numbers dentro del band gap si 'band_mode' está activado
+        
         if self.band_mode:
-            # Annotate band numbers for points within band gap (Spin Up)
+            # Conjuntos para evitar imprimir bandas duplicadas por cada kpoint individualmente
+            printed_bands_per_kpoint_up = {}
+            printed_bands_per_kpoint_down = {}
+            
+            # Agrupar bandas por kpoint y energía similar (Spin Up)
             for kpt, energy, band in zip(kpoint_vals_up, rescale_up, band_numbers_up):
-                if self.vbm <= energy <= self.cbm:
-                # Group band numbers with similar energies (within tolerance)
+                if self.vbm - self.res <= energy <= self.cbm - self.res:
+                    if kpt not in printed_bands_per_kpoint_up:
+                        printed_bands_per_kpoint_up[kpt] = set()
+                    
                     similar_bands = [band]
                     for kpt2, energy2, band2 in zip(kpoint_vals_up, rescale_up, band_numbers_up):
-                        if abs(energy - energy2) <= 0.1 and band != band2 and self.vbm <= energy2 <= self.cbm:
-                            similar_bands.append(band2)
-                
-                # Ensure we print only once per unique set of similar band numbers
-                    similar_bands_sorted = sorted(set(similar_bands))
-                    if tuple(similar_bands_sorted) not in printed_bands_up:
-                        printed_bands_up.add(tuple(similar_bands_sorted))
+                        if kpt == kpt2 and abs(energy - energy2) <= 0.1 and band != band2:
+                            if self.vbm - self.res <= energy2 <= self.cbm - self.res:
+                                similar_bands.append(band2)
+                    
+                    similar_bands_sorted = tuple(sorted(set(similar_bands)))
+                    
+                    if similar_bands_sorted not in printed_bands_per_kpoint_up[kpt]:
+                        printed_bands_per_kpoint_up[kpt].add(similar_bands_sorted)
                         axs[0].text(kpt + 0.05, energy, ', '.join(map(str, similar_bands_sorted)), fontsize=10, color='black')
+
+            # Agrupar bandas por kpoint y energía similar (Spin Down)
+            for kpt, energy, band in zip(kpoint_vals_down, rescale_down, band_numbers_down):
+                if self.vbm - self.res <= energy <= self.cbm - self.res:
+                    if kpt not in printed_bands_per_kpoint_down:
+                        printed_bands_per_kpoint_down[kpt] = set()
+                    
+                    similar_bands = [band]
+                    for kpt2, energy2, band2 in zip(kpoint_vals_down, rescale_down, band_numbers_down):
+                        if kpt == kpt2 and abs(energy - energy2) <= 0.1 and band != band2:
+                            if self.vbm - self.res <= energy2 <= self.cbm - self.res:
+                                similar_bands.append(band2)
+                    
+                    similar_bands_sorted = tuple(sorted(set(similar_bands)))
+                    
+                    if similar_bands_sorted not in printed_bands_per_kpoint_down[kpt]:
+                        printed_bands_per_kpoint_down[kpt].add(similar_bands_sorted)
+                        axs[1].text(kpt + 0.05, energy, ', '.join(map(str, similar_bands_sorted)), fontsize=10, color='black')
 
         # Subplot Spin down
         axs[1].scatter(kpoint_vals_down, rescale_down, color=colors_down, label='Spin Down', s=30)
@@ -117,23 +141,6 @@ class EigenvaluesPlotter:
         axs[1].axhspan(self.cbm - self.res, self.cbm + 1.7551 - self.res, color='thistle', alpha=0.4)
         axs[1].set_xticks(unique_kpoints)
         axs[1].set_xticklabels(x_tick_labels, rotation=0, fontsize=8, size=10)
-
-        # Solo mostrar band numbers dentro del band gap si 'band_mode' está activado
-        if self.band_mode:
-        # Annotate band numbers for points within band gap (Spin Down)
-            for kpt, energy, band in zip(kpoint_vals_down, rescale_down, band_numbers_down):
-                if self.vbm <= energy <= self.cbm:
-                # Group band numbers with similar energies (within tolerance)
-                    similar_bands = [band]
-                    for kpt2, energy2, band2 in zip(kpoint_vals_down, rescale_down, band_numbers_down):
-                        if abs(energy - energy2) <= 0.1 and band != band2 and self.vbm <= energy2 <= self.cbm:
-                            similar_bands.append(band2)
-                
-                # Ensure we print only once per unique set of similar band numbers
-                    similar_bands_sorted = sorted(set(similar_bands))
-                    if tuple(similar_bands_sorted) not in printed_bands_down:
-                        printed_bands_down.add(tuple(similar_bands_sorted))
-                        axs[1].text(kpt + 0.05, energy, ', '.join(map(str, similar_bands_sorted)), fontsize=10, color='black')
 
         occupied_patch = plt.Line2D([0], [0], marker='o', color='w', label='Occupied', markerfacecolor='blue', markersize=10)
         unoccupied_patch = plt.Line2D([0], [0], marker='o', color='w', label='Unoccupied', markerfacecolor='red', markersize=10)

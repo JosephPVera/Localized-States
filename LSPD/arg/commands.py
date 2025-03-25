@@ -10,6 +10,7 @@ class CommandLineArgs:
         # Basic plotting options
         self.parser.add_argument('--tot', action='store_true', help="Use the 'tot' mode for plotting")
         self.parser.add_argument('--band', action='store_true', help="Display band numbers on the plot")
+        self.parser.add_argument('--gamma', action='store_true', help="only for gamma calculations")
         self.args = self.parser.parse_args()
 
     @property
@@ -19,3 +20,7 @@ class CommandLineArgs:
     @property
     def band_mode(self):
         return self.args.band
+        
+    @property
+    def gamma(self):
+        return self.args.gamma

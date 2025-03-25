@@ -6,13 +6,14 @@ from vaspwfc import vaspwfc
 import numpy as np
 
 class ResultsExtractor:
-    def __init__(self, spin_numbers, kpoint_numbers, band_numbers, xml_reader="vasprun.xml", wav_file="WAVECAR"):
+    def __init__(self, spin_numbers, kpoint_numbers, band_numbers, gamma=False, xml_reader="vasprun.xml", wav_file="WAVECAR"):
         self.xml_reader = VasprunReader(xml_reader)
         self.root = self.xml_reader.get_root()
         self.wav_file = wav_file
         self.spin_numbers = spin_numbers
         self.kpoint_numbers = kpoint_numbers
         self.band_numbers = band_numbers
+        self.gamma = gamma
         self.results = []
         self.energy_values = []
         self.occupancy_list = []
@@ -68,7 +69,10 @@ class ResultsExtractor:
     
     def IPR(self):
         # Initialize the VASP wavefunction object
-        wfc = vaspwfc(self.wav_file)
+        if self.gamma:
+            wfc = vaspwfc(self.wav_file, lgamma=True)
+        else:
+            wfc = vaspwfc(self.wav_file)
     
         if wfc._nspin == 2:
             spins = [1, 2]  # Spin-polarized calculation

@@ -39,9 +39,13 @@ Use the **--band** tag to include band numbers in the gap.
 2. Spind down
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Spin_down-kpoint_1-band.png)
 ### 2.3. IPR
-Inverse Participation Ratio (IPR) can also be used to plot the localized states. To obtain the plots, the **WAVECAR** is required. It is important to highlight that the script for this subsection is used from [VaspBandUnfolding](https://github.com/QijingZheng/VaspBandUnfolding/blob/master/vaspwfc.py), so it must download from there. 
+Inverse Participation Ratio (IPR) can also be used to plot the localized states. To obtain the plots, the **WAVECAR** is required. It is important to highlight that the script for this subsection is used from [VaspBandUnfolding](https://github.com/QijingZheng/VaspBandUnfolding/blob/master/vaspwfc.py), so it must download from there. **Note**: Simply download and copy it into the LSPD module; the other processing and plotting functions are already adapted.
 
-**Note**: Simply download and copy it into the LSPD module; the other processing and plotting functions are already adapted.
+Once again, you can change the scale via **res = 0** or **res = vbm**. On the other hand, If the calculations were performed using multiple k-points, the [ipr.py](https://github.com/JosephPVera/Localized-States/blob/main/ipr.py) script works by default. However, if the calculations were performed using only the gamma point, the **--gamma** tag must be used.
+1. Spin up
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/IPR-Spin_up-kpoint_1.png)   
+2. Spin down
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/IPR-Spin_down-kpoint_1.png)
 
 ### 2.4. Localized states
 Review in detail which atoms (indexes) contribute to the high localization of states at each band number in the gap with [localized.py](https://github.com/JosephPVera/Localized-States/blob/main/localized.py) (it can be extended by modifying VBM and CBM). Check the example [localized_Va_N1_2.dat](https://github.com/JosephPVera/Localized-States/blob/main/tests/localized_Va_N1_2.dat) file.

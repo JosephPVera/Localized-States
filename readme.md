@@ -26,6 +26,9 @@ Plot the Kohn-Sham states with [eigenplot.py](https://github.com/JosephPVera/Loc
 Use the **--band** tag to include band numbers in the gap.
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/kohn-sham-states-band.png)
 
+Use the **--split** tag to split the degenerate states, this only works for the Gamma point.
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/kohn-sham-states-degenerate.png)
+
 ### 2.2. Visualize the localized states
 Plot the below figures with [locplot.py](https://github.com/JosephPVera/Localized-States/blob/main/locplot.py). The **locplot.py** script takes the sum of the 5 heaviest values (most contribution) ​​in each band per k-point (Energy versus sum), it also can be change for check the total contribution (tot) for each band per k-point (Energy versus tot) using the **--tot** tag. Once again, you can change the scale via **res = 0** or **res = vbm**.
 1. Spin up
@@ -38,9 +41,6 @@ Use the **--band** tag to include band numbers in the gap.
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Spin_up-kpoint_1-band.png)
 2. Spind down
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Spin_down-kpoint_1-band.png)
-
-Use the **--split** tag to split the degenerate states, this only works for the Gamma point.
-![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/kohn-sham-states-degenerate.png)
 
 ### 2.3. IPR
 Inverse Participation Ratio (IPR) can also be used to plot the localized states. To obtain the plots, the **WAVECAR** is required. It is important to highlight that the script for this subsection is used from [VaspBandUnfolding](https://github.com/QijingZheng/VaspBandUnfolding/blob/master/vaspwfc.py), so it must download from there. **Note**: Simply download and copy it into the LSPD module; the other processing and plotting functions are already adapted.

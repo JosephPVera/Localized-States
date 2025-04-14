@@ -6,7 +6,7 @@
 ----
 The package contains a serie of scripts designed to perform a post-analysis when working with point defects in VASP. Their main functionalities are focused on:
 - Plotting the Kohn-Sham states
-- Plotting how localized the Kohn-Sham states are in the gap (using the DOS projected on s, p, and d orbitals).
+- Plotting how localized the Kohn-Sham states are in the gap either using the Projected DOS onto s, p, and d orbitals or the Inverse Participation Ratio (IPR).
 - Review which atoms (indexs) contribute to this high localization. 
 - Additionally, other useful scripts are included.
   

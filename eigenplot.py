@@ -45,7 +45,7 @@ vasp_data.extract_kpoint_coordinates()
 vasp_data.generate_x_labels()
 
 # Prepare the plotter by declaring its variables
-plotter = EigenvaluesPlotter(vbm, cbm, vasp_data.kpoint_numbers, vasp_data.generate_x_labels, res, args.band_mode)
+plotter = EigenvaluesPlotter(vbm, cbm, vasp_data.kpoint_numbers, vasp_data.generate_x_labels, res, args.band_mode, args.split_mode)
 
 # Use the total_results list to plot
 plotter.store_final_results(total_results)

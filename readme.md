@@ -38,6 +38,10 @@ Use the **--band** tag to include band numbers in the gap.
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Spin_up-kpoint_1-band.png)
 2. Spind down
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Spin_down-kpoint_1-band.png)
+
+Use the **--split** tag to split the degenerate states, this only works for the Gamma point.
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/kohn-sham-states-degenerate.png)
+
 ### 2.3. IPR
 Inverse Participation Ratio (IPR) can also be used to plot the localized states. To obtain the plots, the **WAVECAR** is required. It is important to highlight that the script for this subsection is used from [VaspBandUnfolding](https://github.com/QijingZheng/VaspBandUnfolding/blob/master/vaspwfc.py), so it must download from there. **Note**: Simply download and copy it into the LSPD module; the other processing and plotting functions are already adapted.
 

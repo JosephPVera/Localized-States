@@ -119,7 +119,7 @@ class LocalizedPlotter:
                 plot_filename = f'Spin_up-kpoint_{kpoint}.png'
                 output_file = os.path.join(localized_folder, plot_filename)
             else:
-                plt.title(f'Spin down - kpoint {kpoint}')
+                plt.title(f'Spin down - kpoint {kpoint}', fontsize=14)
                 plot_filename = f'Spin_down-kpoint_{kpoint}.png'
                 output_file = os.path.join(localized_folder, plot_filename)      
             plt.savefig(output_file, bbox_inches='tight', dpi=150)

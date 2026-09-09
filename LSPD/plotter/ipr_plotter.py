@@ -22,6 +22,9 @@ class IPRPlotter:
         self.final_result = total_results.copy()
 
     def plot_ipr(self):
+        #folder_name = os.path.basename(os.getcwd())
+        #localized_folder = f'localized-defects/{folder_name}/Figures'
+        #os.makedirs(localized_folder, exist_ok=True)
 
         content = '\n'.join(self.final_result[1:])
         blocks = content.strip().split('\n\n')

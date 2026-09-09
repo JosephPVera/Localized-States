@@ -12,7 +12,7 @@ from LSPD.arg.commands import CommandLineArgs
 Plot the Kohn-Sham states
 
 Usage:
-     python3 eigenploy.py [--band] [--split]
+     python3 eigenplot.py [--band] [--split]
 """
 
 args = CommandLineArgs()

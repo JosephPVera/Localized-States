@@ -17,7 +17,7 @@ Usage:
 
 args = CommandLineArgs()
 
-# PBE - cBN
+# Variables following the valence band maximum (VBM) and conduction band minimum (CBM).
 vbm = 7.2945  
 cbm = 11.7449
 

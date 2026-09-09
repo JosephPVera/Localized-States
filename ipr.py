@@ -8,6 +8,13 @@ from LSPD.analyzer.get_results import ResultsExtractor
 from LSPD.plotter.ipr_plotter import IPRPlotter
 from LSPD.arg.commands import CommandLineArgs
 
+"""
+Plot the Kohn-Sham states
+
+Usage:
+     python3 eigenplot.py [--band] [--split]
+"""
+
 args = CommandLineArgs()
 
 # PBE - cBN

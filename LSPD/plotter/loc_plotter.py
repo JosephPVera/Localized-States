@@ -8,25 +8,24 @@ import matplotlib.pyplot as plt
 from io import StringIO
 
 class LocalizedPlotter:
-    def __init__(self, spin_numbers, kpoint_numbers, vbm, cbm, tot_mode, band_mode=False, res=0.0):
+    def __init__(self, spin_numbers, kpoint_numbers, vbm, cbm, tot_mode, generate_x_labels, band_mode=False, res=0.0):
         self.spin_numbers = spin_numbers
         self.kpoint_numbers = kpoint_numbers
         self.vbm = vbm  
         self.cbm = cbm  
         self.tot_mode = tot_mode 
+        self.generate_x_labels = generate_x_labels
         self.band_mode = band_mode 
         self.res = res
         self.final_result = []
 
     def store_final_results(self, total_results):
-        "Store total results into final results."
         self.final_result = total_results.copy()
 
     def plot_localized(self):
-        "Generate plots based on final results, spin numbers, and kpoint numbers."
-        folder_name = os.path.basename(os.getcwd())
-        localized_folder = f'localized-defects/{folder_name}/Figures'
-        os.makedirs(localized_folder, exist_ok=True)
+        #folder_name = os.path.basename(os.getcwd())
+        #localized_folder = f'localized-defects/{folder_name}/Figures'
+        #os.makedirs(localized_folder, exist_ok=True)
 
         content = '\n'.join(self.final_result[1:])
         blocks = content.strip().split('\n\n')
@@ -40,19 +39,26 @@ class LocalizedPlotter:
         if len(blocks) > total_combinations:
             print(f"Warning: More blocks ({len(blocks)}) than combinations ({total_combinations}).")
 
+        kpoint_vals_up, energy_vals_up, loc_vals_up, band_numbers_up = [], [], [], []
+        kpoint_vals_down, energy_vals_down, loc_vals_down, band_numbers_down = [], [], [], []
+
         for i, block in enumerate(blocks):
             if i >= total_combinations:
                 break
 
             data = pd.read_csv(StringIO(block), sep=r'\s+', header=None)
 
+            """Column 0 ----> spin number, \
+             Column 1 ----> kpoint number, \
+             Column 2 ----> band number, \
+             Column 3 ----> tot, \
+             Column 4 ----> sum, \
+             Column 5 ----> Energy, \
+             Column 6 ----> occupancies"""
             # Validate number of columns
             if data.shape[1] < 7:
                 print(f"Warning: Block {i + 1} does not have enough columns.")
                 continue
-
-            subset = data.iloc[:, [5, 3, 6]] if self.tot_mode else data.iloc[:, [5, 4, 6]]
-            subset.columns = ['Energy', 'sum', 'occ']
 
             spin_index = i // len(self.kpoint_numbers)
             kpoint_index = i % len(self.kpoint_numbers)
@@ -61,67 +67,120 @@ class LocalizedPlotter:
             kpoint = self.kpoint_numbers[kpoint_index]
 
             # Rescale the energy values
-            rescaled_energy = [valor - self.res for valor in data[5]]
+            rescaled_energy = np.array([valor - self.res for valor in data[5]])
+            loc_values = data[3] if self.tot_mode else data[4]
+            finite_mask = np.isfinite(loc_values).to_numpy()
 
-            gap_data = data[(np.array(rescaled_energy) >= self.vbm - self.res) & (np.array(rescaled_energy) <= self.cbm - self.res)]  
-            band_numbers = gap_data[2].values  
-            energies = np.array(rescaled_energy)[(np.array(rescaled_energy) >= self.vbm - self.res) & (np.array(rescaled_energy) <= self.cbm - self.res)]
-
-            printed_bands = set()  # Track printed bands to avoid duplication
-
-            # Plotting
-            plt.figure(figsize=(10, 6))
-
-            # Scatter points with band numbers next to them
-            for j, (energy, sum_val, occ, band) in enumerate(zip(rescaled_energy, data[3] if self.tot_mode else data[4], data[6], data[2])):
-                if np.isfinite(sum_val):
-                    color = 'blue' if occ > 0.9 else 'red' if occ < 0.1 else 'green'
-                    plt.scatter(energy, sum_val, marker='o', color=color)
-                    
-                    if self.band_mode:
-                    # Check if the point is within the gap
-                        if self.vbm - self.res <= energy <= self.cbm - self.res:
-                        # Group similar band numbers
-                            similar_bands = [band]
-                            for energy2, band2 in zip(energies, band_numbers):
-                                if abs(energy - energy2) <= 0.1 and band != band2 and self.vbm - self.res <= energy2 <= self.cbm - self.res:
-                                    similar_bands.append(band2)
-                        
-                        # Sort and remove duplicates
-                            similar_bands_sorted = sorted(set(similar_bands))
-                        
-                        # Only print once per unique set of band numbers
-                            if tuple(similar_bands_sorted) not in printed_bands:
-                                printed_bands.add(tuple(similar_bands_sorted))
-                            # Label next to scatter point
-                                plt.text(energy + 0.6, sum_val, ', '.join(map(str, similar_bands_sorted)), 
-                                         fontsize=10, color='black')
-
-            # Legend
-            occupied_patch = plt.Line2D([0], [0], marker='o', color='w', label='Occupied', markerfacecolor='blue', markersize=10)
-            unoccupied_patch = plt.Line2D([0], [0], marker='o', color='w', label='Unoccupied', markerfacecolor='red', markersize=10)
-            partially_occupied_patch = plt.Line2D([0], [0], marker='o', color='w', label='Partially occupied', markerfacecolor='green', markersize=10)
-            vbm_patch = plt.Line2D([0], [0], color='lightblue', label='VBM')
-            cbm_patch = plt.Line2D([0], [0], color='thistle', label='CBM')
-            plt.legend(handles=[occupied_patch, unoccupied_patch, partially_occupied_patch, vbm_patch, cbm_patch])
-
-            # VBM and CBM shading
-            plt.axvspan(subset['Energy'].min() - 0.9 - self.res, self.vbm - self.res, color='lightblue', alpha=0.4)
-            plt.axvspan(self.cbm - self.res, subset['Energy'].max() + 0.9  + self.res, color='thistle', alpha=0.4)
-
-            plt.xlabel('Energy (eV)', fontsize=14)
-            plt.ylabel('Localization', fontsize=14)
-            plt.xlim(subset['Energy'].min() - 0.9 - self.res, subset['Energy'].max() + 0.9 - self.res)
-
-            # Title and Save Plot
             if spin == 1:
-                plt.title(f'Spin up - kpoint {kpoint}', fontsize=14)
-                plot_filename = f'Spin_up-kpoint_{kpoint}.png'
-                output_file = os.path.join(localized_folder, plot_filename)
+                target_kpoint, target_energy, target_loc, target_band = (
+                    kpoint_vals_up, energy_vals_up, loc_vals_up, band_numbers_up)
             else:
-                plt.title(f'Spin down - kpoint {kpoint}', fontsize=14)
-                plot_filename = f'Spin_down-kpoint_{kpoint}.png'
-                output_file = os.path.join(localized_folder, plot_filename)      
-            plt.savefig(output_file, bbox_inches='tight', dpi=150)
-            plt.close()
-            print(f"Saved figure: {output_file}")
+                target_kpoint, target_energy, target_loc, target_band = (
+                    kpoint_vals_down, energy_vals_down, loc_vals_down, band_numbers_down)
+
+            target_kpoint.extend([kpoint] * int(finite_mask.sum()))
+            target_energy.extend(rescaled_energy[finite_mask])
+            target_loc.extend(loc_values.to_numpy()[finite_mask])
+            target_band.extend(data[2].to_numpy()[finite_mask].tolist())
+
+        if not (energy_vals_up or energy_vals_down):
+            print("Error: No valid data points to plot.")
+            return
+
+        fig, axs = plt.subplots(1, 2, figsize=(10, 8), constrained_layout=True)
+
+        cmap = 'viridis'
+        all_loc_vals = loc_vals_up + loc_vals_down
+        vmin, vmax = min(all_loc_vals), max(all_loc_vals)
+
+        sc = None
+        if kpoint_vals_up:
+            sc = axs[0].scatter(kpoint_vals_up, energy_vals_up, c=loc_vals_up, cmap=cmap,
+                                 vmin=vmin, vmax=vmax, s=30)
+        if kpoint_vals_down:
+            sc_down = axs[1].scatter(kpoint_vals_down, energy_vals_down, c=loc_vals_down, cmap=cmap,
+                                      vmin=vmin, vmax=vmax, s=30)
+            sc = sc if sc is not None else sc_down
+
+        if self.band_mode:
+            def label_bands(ax, kpoint_vals, energy_vals, band_numbers):
+                unique_kpts = sorted(set(kpoint_vals))
+
+                for kpt in unique_kpts:
+                    idxs = [i for i, k in enumerate(kpoint_vals)
+                            if k == kpt and self.vbm - self.res <= energy_vals[i] <= self.cbm - self.res]
+                    if not idxs:
+                        continue
+
+                    idxs_sorted = sorted(idxs, key=lambda i: energy_vals[i])
+
+                    groups = []
+                    current_group = [idxs_sorted[0]]
+                    current_y = energy_vals[idxs_sorted[0]]
+                    for i in idxs_sorted[1:]:
+                        y_val = energy_vals[i]
+                        if abs(y_val - current_y) <= 0.1:
+                            current_group.append(i)
+                        else:
+                            groups.append(current_group)
+                            current_group = [i]
+                        current_y = y_val
+                    groups.append(current_group)
+
+                    for group in groups:
+                        group_bands = sorted(set(band_numbers[i] for i in group))
+                        y_mean = sum(energy_vals[i] for i in group) / len(group)
+                        chunks = [group_bands[c:c + 5] for c in range(0, len(group_bands), 5)]
+                        label = "\n".join(", ".join(str(b) for b in chunk) for chunk in chunks)
+                        ax.annotate(
+                            label,
+                            xy=(kpt, y_mean),
+                            xytext=(4, 0),
+                            textcoords="offset points",
+                            fontsize=10,
+                            va="center",
+                            ha="left",
+                            zorder=4,
+                        )
+
+            label_bands(axs[0], kpoint_vals_up, energy_vals_up, band_numbers_up)
+            label_bands(axs[1], kpoint_vals_down, energy_vals_down, band_numbers_down)
+
+        kpoint_labels = self.generate_x_labels()
+
+        unique_kpoints = sorted(set(kpoint_vals_up + kpoint_vals_down))
+        x_tick_labels = [kpoint_labels[unique_kpoints.index(kpt)] if kpt in unique_kpoints else ''
+                          for kpt in unique_kpoints]
+
+        all_energies = energy_vals_up + energy_vals_down
+        y_min = min(all_energies) - 0.9
+        y_max = max(all_energies) + 0.9
+
+        # Subplot Spin up
+        axs[0].set_xlabel('K-point coordinates', fontsize=14)
+        axs[0].set_title('Spin up', fontsize=14)
+        axs[0].set_ylabel('Energy (eV)', fontsize=14)
+        axs[0].set_xlim(min(kpoint_vals_up) - 0.5, max(kpoint_vals_up) + 0.5)
+        axs[0].set_ylim(self.vbm - 1.7945 - self.res, self.cbm + 1.7551 - self.res)
+        axs[0].axhspan(self.vbm - self.res, self.vbm - 1.7945 - self.res, color='lightblue', alpha=0.4) 
+        axs[0].axhspan(self.cbm - self.res, self.cbm + 1.7551 - self.res, color='thistle', alpha=0.4) 
+        axs[0].set_xticks(unique_kpoints)
+        axs[0].set_xticklabels(x_tick_labels, rotation=0, fontsize=8, size=10)
+
+        # Subplot Spin down
+        axs[1].set_xlabel('K-point coordinates', fontsize=14)
+        axs[1].set_title('Spin down', fontsize=14)
+        axs[1].tick_params(axis='y', which='both', left=True, right=False, labelleft=False)
+        axs[1].set_xlim(min(kpoint_vals_down) - 0.5, max(kpoint_vals_down) + 0.5)
+        axs[1].set_ylim(self.vbm - 1.7945 - self.res, self.cbm + 1.7551 - self.res)
+        axs[1].axhspan(self.vbm - self.res, self.vbm - 1.7945 - self.res, color='lightblue', alpha=0.4)
+        axs[1].axhspan(self.cbm - self.res, self.cbm + 1.7551 - self.res, color='thistle', alpha=0.4)
+        axs[1].set_xticks(unique_kpoints)
+        axs[1].set_xticklabels(x_tick_labels, rotation=0, fontsize=8, size=10)
+        
+        cbar = fig.colorbar(sc, ax=axs, orientation='vertical', fraction=0.046, pad=0.04)
+
+        output_file = 'eigenplot_localization.png'
+        plt.savefig(output_file, dpi=150)
+        plt.close()
+        print(f"Saved figure: {output_file}")

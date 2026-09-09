@@ -34,7 +34,7 @@ Plot the below figures with [locplot.py](https://github.com/JosephPVera/Localize
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/eigenplot_localization.png)
 
 Use the **--band** tag to include band numbers in the gap.
-![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/eigenplot_localization.png)
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/eigenplot_localization-band.png)
 
 ### 2.3. IPR
 Inverse Participation Ratio (IPR) can also be used to plot the localized states. To obtain the plots, the **WAVECAR** is required. It is important to highlight that the script for this subsection is used from [VaspBandUnfolding](https://github.com/QijingZheng/VaspBandUnfolding/blob/master/vaspwfc.py), so it must download from there. **Note**: Simply download and copy it into the LSPD module; the other processing and plotting functions are already adapted.

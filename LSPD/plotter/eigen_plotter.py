@@ -1,5 +1,5 @@
 # Written by Joseph P.Vera
-# 2025-04
+# 2025-02
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -17,7 +17,6 @@ class EigenvaluesPlotter:
         self.split_mode = split_mode
         
     def store_final_results(self, total_results):
-        "Store total results into final results."
         self.final_result = total_results.copy()
         
     def plot_eigenvalues(self):
@@ -50,7 +49,10 @@ class EigenvaluesPlotter:
                 subset.columns = ['kpoint', 'Energy', 'occ', 'band']
 
                 # Filer states inside the band gap
-                bandgap_states = subset[(subset['Energy'] >= self.vbm - 0.8) & (subset['Energy'] <= self.cbm + 0.7)]
+                if self.split_mode:
+                    bandgap_states = subset[(subset['Energy'] >= self.vbm - 1.6) & (subset['Energy'] <= self.cbm + 2.6)] # 1.6
+                else:
+                    bandgap_states = subset[(subset['Energy'] >= self.vbm - 1.6) & (subset['Energy'] <= self.cbm + 1.6)] # 0.4              1.6
 
                 if not bandgap_states.empty:
                     kpoint_vals = bandgap_states['kpoint'].to_list()
@@ -77,55 +79,62 @@ class EigenvaluesPlotter:
         rescale_up = [valor - self.res for valor in energy_vals_up]
         rescale_down = [valor - self.res for valor in energy_vals_down]
         
-        fig, axs = plt.subplots(1, 2, figsize=(10, 8))
+        fig, axs = plt.subplots(1, 2, figsize=(10, 8), constrained_layout=True)
         kpoint_labels = self.generate_x_labels()
 
         unique_kpoints = sorted(set(kpoint_vals_up + kpoint_vals_down))
         x_tick_labels = [kpoint_labels[unique_kpoints.index(kpt)] if kpt in unique_kpoints else '' for kpt in unique_kpoints]
 
         if self.band_mode:
+            def label_bands(ax, kpoint_vals, energy_vals, band_numbers):
+                unique_kpts = sorted(set(kpoint_vals))
 
-            printed_bands_per_kpoint_up = {}
-            printed_bands_per_kpoint_down = {}
+                for kpt in unique_kpts:
+                    # Points from this k-point that fall inside the gap
+                    idxs = [i for i, k in enumerate(kpoint_vals)
+                            if k == kpt and self.vbm - self.res <= energy_vals[i] <= self.cbm - self.res]
+                    if not idxs:
+                        continue
 
-            # Group by kpoint and energy (Spin Up)
-            for kpt, energy, band in zip(kpoint_vals_up, rescale_up, band_numbers_up):
-                if self.vbm - self.res <= energy <= self.cbm - self.res:
-                    if kpt not in printed_bands_per_kpoint_up:
-                        printed_bands_per_kpoint_up[kpt] = set()
-                    
-                    similar_bands = [band]
-                    for kpt2, energy2, band2 in zip(kpoint_vals_up, rescale_up, band_numbers_up):
-                        if kpt == kpt2 and abs(energy - energy2) <= 0.1 and band != band2:
-                            if self.vbm - self.res <= energy2 <= self.cbm - self.res:
-                                similar_bands.append(band2)
-                    
-                    similar_bands_sorted = tuple(sorted(set(similar_bands)))
-                    
-                    if similar_bands_sorted not in printed_bands_per_kpoint_up[kpt]:
-                        printed_bands_per_kpoint_up[kpt].add(similar_bands_sorted)
-                        axs[0].text(kpt + 0.05, energy, ', '.join(map(str, similar_bands_sorted)), fontsize=10, color='black')
+                    # Chain grouping: sort by energy and merge consecutive
+                    # points that are <= 0.1 eV apart (same idea as qe_locplot.py)
+                    idxs_sorted = sorted(idxs, key=lambda i: energy_vals[i])
 
-            # Group by kpoint and energy (Spin Down)
-            for kpt, energy, band in zip(kpoint_vals_down, rescale_down, band_numbers_down):
-                if self.vbm - self.res <= energy <= self.cbm - self.res:
-                    if kpt not in printed_bands_per_kpoint_down:
-                        printed_bands_per_kpoint_down[kpt] = set()
-                    
-                    similar_bands = [band]
-                    for kpt2, energy2, band2 in zip(kpoint_vals_down, rescale_down, band_numbers_down):
-                        if kpt == kpt2 and abs(energy - energy2) <= 0.1 and band != band2:
-                            if self.vbm - self.res <= energy2 <= self.cbm - self.res:
-                                similar_bands.append(band2)
-                    
-                    similar_bands_sorted = tuple(sorted(set(similar_bands)))
-                    
-                    if similar_bands_sorted not in printed_bands_per_kpoint_down[kpt]:
-                        printed_bands_per_kpoint_down[kpt].add(similar_bands_sorted)
-                        axs[1].text(kpt + 0.05, energy, ', '.join(map(str, similar_bands_sorted)), fontsize=10, color='black')
+                    groups = []
+                    current_group = [idxs_sorted[0]]
+                    current_y = energy_vals[idxs_sorted[0]]
+                    for i in idxs_sorted[1:]:
+                        y_val = energy_vals[i]
+                        if abs(y_val - current_y) <= 0.1:
+                            current_group.append(i)
+                        else:
+                            groups.append(current_group)
+                            current_group = [i]
+                        current_y = y_val
+                    groups.append(current_group)
+
+                    for group in groups:
+                        group_bands = sorted(set(band_numbers[i] for i in group))
+                        y_mean = sum(energy_vals[i] for i in group) / len(group)
+                        chunks = [group_bands[c:c + 5] for c in range(0, len(group_bands), 5)]
+                        label = "\n".join(", ".join(str(b) for b in chunk) for chunk in chunks)
+                        ax.annotate(
+                            label,
+                            xy=(kpt, y_mean),
+                            xytext=(4, 0),
+                            textcoords="offset points",
+                            fontsize=10,
+                            va="center",
+                            ha="left",
+                            zorder=4,
+                        )
+
+            label_bands(axs[0], kpoint_vals_up, rescale_up, band_numbers_up)
+            
+            label_bands(axs[1], kpoint_vals_down, rescale_down, band_numbers_down)
 
         if self.split_mode:
-            def find_degenerate_states(energy_list, threshold=0.006): 
+            def find_degenerate_states(energy_list, threshold=0.006): # 0.006
                 degenerate_states = []
                 used_indices = set()
 
@@ -141,7 +150,8 @@ class EigenvaluesPlotter:
                 return degenerate_states
 
             degenerate_groups_up = find_degenerate_states(energy_vals_up)
-
+            
+            size_arrow_spin = 0.21 
             for degenerate_group in degenerate_groups_up:
                 energy = degenerate_group[0]
                 idx = energy_vals_up.index(energy)
@@ -153,8 +163,8 @@ class EigenvaluesPlotter:
                         axs[0].scatter([1], [energy - self.res], color=color, marker='o')
                         axs[0].annotate(
                             '',
-                            xy=(1, energy - self.res + 0.21),
-                            xytext=(1, energy - self.res - 0.21),
+                            xy=(1, energy - self.res + size_arrow_spin), 
+                            xytext=(1, energy - self.res - size_arrow_spin),
                             arrowprops=dict(arrowstyle='->', color=color, lw=0.5),
                             zorder=4)
 
@@ -168,8 +178,8 @@ class EigenvaluesPlotter:
                             axs[0].plot(x_center, energy - self.res, marker='o', color=color)
                             axs[0].annotate(
                                 '',
-                                xy=(x_center, energy - self.res + 0.21),
-                                xytext=(x_center, energy - self.res - 0.21),
+                                xy=(x_center, energy - self.res + size_arrow_spin),
+                                xytext=(x_center, energy - self.res - size_arrow_spin),
                                 arrowprops=dict(arrowstyle='->', color=color, lw=0.5),
                                 zorder=4)
 
@@ -183,12 +193,12 @@ class EigenvaluesPlotter:
                             axs[0].plot(x_center, energy - self.res, marker='o', color=color)
                             axs[0].annotate(
                                 '',
-                                xy=(x_center, energy - self.res + 0.21),
-                                xytext=(x_center, energy - self.res - 0.21),
+                                xy=(x_center, energy - self.res + size_arrow_spin),
+                                xytext=(x_center, energy - self.res - size_arrow_spin),
                                 arrowprops=dict(arrowstyle='->', color=color, lw=0.5),
                                 zorder=4)
                         axs[0].scatter([1], [energy - self.res], color=color, marker='o')
-                        
+
             degenerate_groups_down = find_degenerate_states(energy_vals_down)
 
             for degenerate_group in degenerate_groups_down:
@@ -206,8 +216,8 @@ class EigenvaluesPlotter:
                         axs[1].plot(x_center, y_center, marker='o', color=color)
                         axs[1].annotate(
                             '',
-                            xy=(x_center, y_center + 0.21),
-                            xytext=(x_center, y_center - 0.21),
+                            xy=(x_center, y_center + size_arrow_spin),
+                            xytext=(x_center, y_center - size_arrow_spin),
                             arrowprops=dict(arrowstyle='<-', color=color, lw=0.5),
                             zorder=4)
 
@@ -221,8 +231,8 @@ class EigenvaluesPlotter:
                             axs[1].plot(x_center, energy - self.res, marker='o', color=color)
                             axs[1].annotate(
                                 '',
-                                xy=(x_center, energy - self.res + 0.21),
-                                xytext=(x_center, energy - self.res - 0.21),
+                                xy=(x_center, energy - self.res + size_arrow_spin),
+                                xytext=(x_center, energy - self.res - size_arrow_spin),
                                 arrowprops=dict(arrowstyle='<-', color=color, lw=0.5),
                                 zorder=4)
 
@@ -237,8 +247,8 @@ class EigenvaluesPlotter:
                             axs[1].plot(x_center, energy - self.res, marker='o', color=color)
                             axs[1].annotate(
                                 '',
-                                xy=(x_center, energy - self.res + 0.21),
-                                xytext=(x_center, energy - self.res - 0.21),
+                                xy=(x_center, energy - self.res + size_arrow_spin),
+                                xytext=(x_center, energy - self.res - size_arrow_spin),
                                 arrowprops=dict(arrowstyle='<-', color=color, lw=0.5),
                                 zorder=4)
                         axs[1].scatter([1], [energy - self.res], color=color, marker='o')                                                  
@@ -273,7 +283,5 @@ class EigenvaluesPlotter:
         partially_occupied_patch = plt.Line2D([0], [0], marker='o', color='w', label='Partially occupied', markerfacecolor='green', markersize=10)
         vbm_patch = plt.Line2D([0], [0], color='lightblue', label='VBM')
         cbm_patch = plt.Line2D([0], [0], color='thistle', label='CBM')
-        plt.legend(handles=[occupied_patch, unoccupied_patch, partially_occupied_patch, vbm_patch, cbm_patch], bbox_to_anchor=(1.56, 0.7))
-        plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1, wspace=0.03)
-        plt.tight_layout()
+        plt.legend(handles=[occupied_patch, unoccupied_patch, partially_occupied_patch, vbm_patch, cbm_patch], bbox_to_anchor=(1.5, 0.6))
         plt.savefig('kohn-sham-states.png', dpi=150)

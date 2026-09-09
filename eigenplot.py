@@ -8,13 +8,18 @@ from LSPD.analyzer.get_results import ResultsExtractor
 from LSPD.plotter.eigen_plotter import EigenvaluesPlotter
 from LSPD.arg.commands import CommandLineArgs
 
-"Plot the Kohn-Sham states"
+"""
+Plot the Kohn-Sham states
+
+Usage:
+     python3 eigenploy.py [--band] [--split]
+"""
 
 args = CommandLineArgs()
 
 # Variables following the valence band maximum (VBM) and conduction band minimum (CBM).
-vbm = 6.7056 # AEXX = 0.25 (AEXX = 0.33 --> 6.4979)  
-cbm = 12.5198 # AEXX = 0.25 (AEXX = 0.33 --> 12.7609)
+vbm = 6.7056 
+cbm = 12.5198 
 
 # res is optional to rescale the Kohn-Sham (eigenvalues) plot with respect to VBM, it may also be off.
 res = 0

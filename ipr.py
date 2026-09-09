@@ -9,10 +9,10 @@ from LSPD.plotter.ipr_plotter import IPRPlotter
 from LSPD.arg.commands import CommandLineArgs
 
 """
-Plot the Kohn-Sham states
+Plot the localization states in each kpoint using the wavefunctions
 
 Usage:
-     python3 eigenplot.py [--band] [--split]
+     python3 ipr.py [--band] [--gamma]
 """
 
 args = CommandLineArgs()

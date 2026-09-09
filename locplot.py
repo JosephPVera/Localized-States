@@ -8,17 +8,22 @@ from LSPD.analyzer.get_results import ResultsExtractor
 from LSPD.plotter.loc_plotter import LocalizedPlotter
 from LSPD.arg.commands import CommandLineArgs
 
-"Plot the localization states in each kpoint"
+"""
+Plot the localization states in each kpoint using the projected density of states (s, p, d, ...)
+
+Usage:
+     python3 locplot.py [--band] [--tot]
+"""
 
 # Use --tot command for plot: Energy versus tot column (PROCAR). By default plot: Energy versus sum (the 5 heaviest values from tot (each band)).
 args = CommandLineArgs()
 
 # Variables following the valence band maximum (VBM) and conduction band minimum (CBM).
-vbm = 6.7056 # AEXX = 0.25 (AEXX = 0.33 --> 6.4979)  
-cbm = 12.5198 # AEXX = 0.25 (AEXX = 0.33 --> 12.7609)
+vbm = 6.7056 
+cbm = 12.5198 
 
 # res is optional to rescale the energy
-res = 0
+res = vbm
 
 # Read the file
 xml_reader = VasprunReader("vasprun.xml")
@@ -41,11 +46,16 @@ results_extractor.extract_energy_occupancy()
 # Merge the results and energy_occupancy in one list to plot.
 total_results = results_extractor.create_total_results()
 
+# Extract k-point coordinates and labels for x-axis as xticks to plot .
+vasp_data.extract_kpoint_coordinates()
+vasp_data.generate_x_labels()
+
 # Prepare the plotter by declaring its variables
-plotter = LocalizedPlotter(vasp_data.spin_numbers, vasp_data.kpoint_numbers, vbm, cbm, args.tot_mode, args.band_mode, res)
+plotter = LocalizedPlotter(vasp_data.spin_numbers, vasp_data.kpoint_numbers, vbm, cbm, args.tot_mode, vasp_data.generate_x_labels, args.band_mode, res)
 
 # Use the total_results list to plot
 plotter.store_final_results(total_results)
 
 # Plot the localized states
+plotter.plot_localized()
 plotter.plot_localized()

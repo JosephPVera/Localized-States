@@ -15,8 +15,7 @@ The package contains a serie of scripts designed to perform a post-analysis when
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Guide/Figures/guide.png)
 
 ### 1.2. Localized states
-![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Guide/Figures/Spin_up-kpoint_1.png)
-![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Guide/Figures/Spin_down-kpoint_4.png)
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Guide/Figures/eigenplot_localization.png)
 
 ## 2. Usage
 ### 2.1. Kohn-Sham states

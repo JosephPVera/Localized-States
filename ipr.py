@@ -44,11 +44,18 @@ results_extractor.extract_energy_occupancy()
 # Merge the results and energy_occupancy in one list to plot.
 total_results = results_extractor.create_total_results()
 
+# Extract k-point coordinates and labels for x-axis as xticks to plot .
+vasp_data.extract_kpoint_coordinates()
+vasp_data.generate_x_labels()
+
 # Prepare the plotter by declaring its variables
-plotter = IPRPlotter(vasp_data.spin_numbers, vasp_data.kpoint_numbers, vbm, cbm, args.band_mode, res)
+plotter = IPRPlotter(vasp_data.spin_numbers, vasp_data.kpoint_numbers, vbm, cbm, vasp_data.generate_x_labels, args.band_mode, res)
 
 # Use the total_results list to plot
 plotter.store_final_results(total_results)
+
+# Plot the localized states
+plotter.plot_ipr()
 
 # Plot the localized states
 plotter.plot_ipr()

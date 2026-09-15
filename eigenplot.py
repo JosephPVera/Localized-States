@@ -2,30 +2,38 @@
 # Written by Joseph P.Vera
 # 2025-02
 
+import json
+
 from LSPD.reader.reader import VasprunReader
 from LSPD.analyzer.main_variables import VariablesExtractor
 from LSPD.analyzer.get_results import ResultsExtractor
 from LSPD.plotter.eigen_plotter import EigenvaluesPlotter
 from LSPD.arg.commands import CommandLineArgs
 
-"""
-Plot the Kohn-Sham states
-
+"""Plot the Kohn-Sham states
 Usage:
      python3 eigenplot.py [--band] [--split]
 """
 
 args = CommandLineArgs()
 
-# Variables following the valence band maximum (VBM) and conduction band minimum (CBM).
-vbm = 6.7056 
-cbm = 12.5198 
+# Path to the primitive.json file containing VBM/CBM (Band_edges).
+PRIMITIVE_JSON_PATH = "../../primitive/primitive.json"
+
+# Read VBM and CBM from primitive.json instead of hardcoding them.
+with open(PRIMITIVE_JSON_PATH, "r") as f:
+    primitive_data = json.load(f)
+
+band_edges = primitive_data["Band_edges"]
+vbm = band_edges["VBM"]
+cbm = band_edges["CBM"]
 
 # res is optional to rescale the Kohn-Sham (eigenvalues) plot with respect to VBM, it may also be off.
-res = 0
+res = vbm
 
 # Read the file
-xml_reader = VasprunReader("vasprun.xml")
+#xml_reader = VasprunReader("vasprun.xml")
+xml_reader = VasprunReader()
 
 # Prepare the vasprun.xml file to parse
 vasp_data = VariablesExtractor(xml_reader)

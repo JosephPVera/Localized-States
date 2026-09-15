@@ -2,15 +2,15 @@
 # Written by Joseph P.Vera
 # 2025-02
 
+import json
+
 from LSPD.reader.reader import VasprunReader
 from LSPD.analyzer.main_variables import VariablesExtractor
 from LSPD.analyzer.get_results import ResultsExtractor
 from LSPD.plotter.loc_plotter import LocalizedPlotter
 from LSPD.arg.commands import CommandLineArgs
 
-"""
-Plot the localization states in each kpoint using the projected density of states (s, p, d, ...)
-
+"""Plot the localization states in each kpoint
 Usage:
      python3 locplot.py [--band] [--tot]
 """
@@ -18,15 +18,23 @@ Usage:
 # Use --tot command for plot: Energy versus tot column (PROCAR). By default plot: Energy versus sum (the 5 heaviest values from tot (each band)).
 args = CommandLineArgs()
 
-# Variables following the valence band maximum (VBM) and conduction band minimum (CBM).
-vbm = 6.7056 
-cbm = 12.5198 
+# Path to the primitive.json file containing VBM/CBM (Band_edges).
+PRIMITIVE_JSON_PATH = "../../primitive/primitive.json"
+
+# Read VBM and CBM from primitive.json instead of hardcoding them.
+with open(PRIMITIVE_JSON_PATH, "r") as f:
+    primitive_data = json.load(f)
+
+band_edges = primitive_data["Band_edges"]
+vbm = band_edges["VBM"]
+cbm = band_edges["CBM"]
 
 # res is optional to rescale the energy
 res = vbm
 
 # Read the file
-xml_reader = VasprunReader("vasprun.xml")
+#xml_reader = VasprunReader("vasprun.xml")
+xml_reader = VasprunReader()
 
 # Prepare the vasprun.xml file to parse
 vasp_data = VariablesExtractor(xml_reader)
@@ -57,5 +65,4 @@ plotter = LocalizedPlotter(vasp_data.spin_numbers, vasp_data.kpoint_numbers, vbm
 plotter.store_final_results(total_results)
 
 # Plot the localized states
-plotter.plot_localized()
 plotter.plot_localized()

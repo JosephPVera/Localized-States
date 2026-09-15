@@ -8,18 +8,23 @@ from LSPD.analyzer.get_results import ResultsExtractor
 from LSPD.plotter.ipr_plotter import IPRPlotter
 from LSPD.arg.commands import CommandLineArgs
 
-"""
-Plot the localization states in each kpoint using the wavefunctions
-
+"""Plot the localization states in each kpoint using WAVECAR
 Usage:
      python3 ipr.py [--band] [--gamma]
 """
 
 args = CommandLineArgs()
 
-# Variables following the valence band maximum (VBM) and conduction band minimum (CBM).
-vbm = 7.2945  
-cbm = 11.7449
+# Path to the primitive.json file containing VBM/CBM (Band_edges).
+PRIMITIVE_JSON_PATH = "../../primitive/primitive.json"
+
+# Read VBM and CBM from primitive.json instead of hardcoding them.
+with open(PRIMITIVE_JSON_PATH, "r") as f:
+    primitive_data = json.load(f)
+
+band_edges = primitive_data["Band_edges"]
+vbm = band_edges["VBM"]
+cbm = band_edges["CBM"]
 
 res=vbm
 
@@ -53,9 +58,6 @@ plotter = IPRPlotter(vasp_data.spin_numbers, vasp_data.kpoint_numbers, vbm, cbm,
 
 # Use the total_results list to plot
 plotter.store_final_results(total_results)
-
-# Plot the localized states
-plotter.plot_ipr()
 
 # Plot the localized states
 plotter.plot_ipr()

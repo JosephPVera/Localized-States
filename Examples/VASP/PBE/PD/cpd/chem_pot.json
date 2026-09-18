@@ -1,0 +1,16 @@
+{
+  "@module": "VASP",
+  "@class": "Chemical Potentials Summary",
+  "C": {
+    "compound": "C",
+    "total_energy_eV": -18.18608019,
+    "num_atoms": 2,
+    "energy_per_atom_eV": -9.093040095
+  },
+  "N": {
+    "compound": "N",
+    "total_energy_eV": -16.64176244,
+    "num_atoms": 2,
+    "energy_per_atom_eV": -8.32088122
+  }
+}

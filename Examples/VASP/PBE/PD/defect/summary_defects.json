@@ -1,0 +1,168 @@
+{
+  "@module": "VASP",
+  "@class": "Defects Summary",
+  "band_edges": {
+    "VBM": 9.646,
+    "CBM": 13.8025,
+    "gap": 4.156499999999999
+  },
+  "perfect": {
+    "total_energy": {
+      "TOTEN": -1961.92007167
+    }
+  },
+  "defects": {
+    "N_C-V_C": {
+      "N_C-V_C_-3": {
+        "charge": -3,
+        "chemical_potentials": {
+          "defect": {
+            "C": -2,
+            "N": 1
+          },
+          "limits": {
+            "C": 0.0,
+            "N": 0.0
+          },
+          "elementals": {
+            "C": -9.093040095,
+            "N": -8.32088122
+          }
+        },
+        "energy_corrections": {
+          "pc term": 2.9279819049983264,
+          "alignment term": -0.14240762330392748,
+          "correction energy": 2.785574281694399
+        },
+        "total_energy": {
+          "TOTEN": -1909.15768091
+        }
+      },
+      "N_C-V_C_-2": {
+        "charge": -2,
+        "chemical_potentials": {
+          "defect": {
+            "C": -2,
+            "N": 1
+          },
+          "limits": {
+            "C": 0.0,
+            "N": 0.0
+          },
+          "elementals": {
+            "C": -9.093040095,
+            "N": -8.32088122
+          }
+        },
+        "energy_corrections": {
+          "pc term": 1.3013252911103672,
+          "alignment term": 0.022596720959009622,
+          "correction energy": 1.3239220120693769
+        },
+        "total_energy": {
+          "TOTEN": -1922.19055979
+        }
+      },
+      "N_C-V_C_-1": {
+        "charge": -1,
+        "chemical_potentials": {
+          "defect": {
+            "C": -2,
+            "N": 1
+          },
+          "limits": {
+            "C": 0.0,
+            "N": 0.0
+          },
+          "elementals": {
+            "C": -9.093040095,
+            "N": -8.32088122
+          }
+        },
+        "energy_corrections": {
+          "pc term": 0.3253313227775918,
+          "alignment term": 0.054456085550801635,
+          "correction energy": 0.3797874083283934
+        },
+        "total_energy": {
+          "TOTEN": -1934.98719358
+        }
+      },
+      "N_C-V_C_0": {
+        "charge": 0,
+        "chemical_potentials": {
+          "defect": {
+            "C": -2,
+            "N": 1
+          },
+          "limits": {
+            "C": 0.0,
+            "N": 0.0
+          },
+          "elementals": {
+            "C": -9.093040095,
+            "N": -8.32088122
+          }
+        },
+        "energy_corrections": {
+          "pc term": 0.0,
+          "alignment term": -0.0,
+          "correction energy": 0.0
+        },
+        "total_energy": {
+          "TOTEN": -1946.1647947
+        }
+      },
+      "N_C-V_C_1": {
+        "charge": 1,
+        "chemical_potentials": {
+          "defect": {
+            "C": -2,
+            "N": 1
+          },
+          "limits": {
+            "C": 0.0,
+            "N": 0.0
+          },
+          "elementals": {
+            "C": -9.093040095,
+            "N": -8.32088122
+          }
+        },
+        "energy_corrections": {
+          "pc term": 0.3253313227775918,
+          "alignment term": -0.17308131417937955,
+          "correction energy": 0.15225000859821225
+        },
+        "total_energy": {
+          "TOTEN": -1957.02885283
+        }
+      },
+      "N_C-V_C_2": {
+        "charge": 2,
+        "chemical_potentials": {
+          "defect": {
+            "C": -2,
+            "N": 1
+          },
+          "limits": {
+            "C": 0.0,
+            "N": 0.0
+          },
+          "elementals": {
+            "C": -9.093040095,
+            "N": -8.32088122
+          }
+        },
+        "energy_corrections": {
+          "pc term": 1.3013252911103672,
+          "alignment term": -0.5454551920218519,
+          "correction energy": 0.7558700990885153
+        },
+        "total_energy": {
+          "TOTEN": -1966.92116917
+        }
+      }
+    }
+  }
+}

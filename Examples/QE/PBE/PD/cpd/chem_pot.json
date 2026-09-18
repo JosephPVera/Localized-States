@@ -1,0 +1,16 @@
+{
+  "@module": "Quantum ESPRESSO",
+  "@class": "Chemical Potentials Summary",
+  "C": {
+    "compound": "C",
+    "total_energy_eV": -501.60290567785023,
+    "num_atoms": 2,
+    "energy_per_atom_eV": -250.80145283892512
+  },
+  "N": {
+    "compound": "N",
+    "total_energy_eV": -767.8157629718809,
+    "num_atoms": 2,
+    "energy_per_atom_eV": -383.90788148594044
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "@module": "Quantum ESPRESSO",
+  "@class": "Defects Summary",
+  "band_edges": {
+    "VBM": 13.31233577,
+    "CBM": 17.4087336,
+    "gap": 4.096397830000001
+  },
+  "perfect": {
+    "total_energy": {
+      "TOTEN": -54171.41584855689
+    }
+  },
+  "defects": {
+    "N_C-V_C": {
+      "N_C-V_C_-3": {
+        "charge": -3,
+        "chemical_potentials": {
+          "defect": {
+            "C": -2,
+            "N": 1
+          },
+          "limits": {
+            "C": 0.0,
+            "N": 0.0
+          },
+          "elementals": {
+            "C": -250.80145283892512,
+            "N": -383.90788148594044
+          }
+        },
+        "energy_corrections": {
+          "pc term": 2.910096114798193,
+          "alignment term": -1.2047753279250484,
+          "correction energy": 1.7053207868731446
+        },
+        "total_energy": {
+          "TOTEN": -53999.947955356554
+        }
+      },
+      "N_C-V_C_-2": {
+        "charge": -2,
+        "chemical_potentials": {
+          "defect": {
+            "C": -2,
+            "N": 1
+          },
+          "limits": {
+            "C": 0.0,
+            "N": 0.0
+          },
+          "elementals": {
+            "C": -250.80145283892512,
+            "N": -383.90788148594044
+          }
+        },
+        "energy_corrections": {
+          "pc term": 1.2933760510214192,
+          "alignment term": -0.49255608807135315,
+          "correction energy": 0.8008199629500661
+        },
+        "total_energy": {
+          "TOTEN": -54016.634146521355
+        }
+      },
+      "N_C-V_C_-1": {
+        "charge": -1,
+        "chemical_potentials": {
+          "defect": {
+            "C": -2,
+            "N": 1
+          },
+          "limits": {
+            "C": 0.0,
+            "N": 0.0
+          },
+          "elementals": {
+            "C": -250.80145283892512,
+            "N": -383.90788148594044
+          }
+        },
+        "energy_corrections": {
+          "pc term": 0.3233440127553548,
+          "alignment term": -0.12425523468730197,
+          "correction energy": 0.1990887780680528
+        },
+        "total_energy": {
+          "TOTEN": -54032.98621315615
+        }
+      },
+      "N_C-V_C_0": {
+        "charge": 0,
+        "chemical_potentials": {
+          "defect": {
+            "C": -2,
+            "N": 1
+          },
+          "limits": {
+            "C": 0.0,
+            "N": 0.0
+          },
+          "elementals": {
+            "C": -250.80145283892512,
+            "N": -383.90788148594044
+          }
+        },
+        "energy_corrections": {
+          "pc term": 0.0,
+          "alignment term": 0.0,
+          "correction energy": 0.0
+        },
+        "total_energy": {
+          "TOTEN": -54047.945297771985
+        }
+      },
+      "N_C-V_C_1": {
+        "charge": 1,
+        "chemical_potentials": {
+          "defect": {
+            "C": -2,
+            "N": 1
+          },
+          "limits": {
+            "C": 0.0,
+            "N": 0.0
+          },
+          "elementals": {
+            "C": -250.80145283892512,
+            "N": -383.90788148594044
+          }
+        },
+        "energy_corrections": {
+          "pc term": 0.3233440127553548,
+          "alignment term": 0.10697303585675155,
+          "correction energy": 0.43031704861210635
+        },
+        "total_energy": {
+          "TOTEN": -54062.27087138349
+        }
+      },
+      "N_C-V_C_2": {
+        "charge": 2,
+        "chemical_potentials": {
+          "defect": {
+            "C": -2,
+            "N": 1
+          },
+          "limits": {
+            "C": 0.0,
+            "N": 0.0
+          },
+          "elementals": {
+            "C": -250.80145283892512,
+            "N": -383.90788148594044
+          }
+        },
+        "energy_corrections": {
+          "pc term": 1.2933760510214192,
+          "alignment term": -0.18367908901480723,
+          "correction energy": 1.109696962006612
+        },
+        "total_energy": {
+          "TOTEN": -54075.776268915106
+        }
+      }
+    }
+  }
+}

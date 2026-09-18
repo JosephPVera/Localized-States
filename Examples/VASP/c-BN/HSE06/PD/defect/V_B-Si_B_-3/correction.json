@@ -1,0 +1,1360 @@
+{
+  "@module": "VASP",
+  "@class": "Energy Correction Summary",
+  "charge": -3,
+  "lattice": [
+    [
+      10.793797493,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      10.793797493,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      10.793797493
+    ]
+  ],
+  "dielectric_tensor": [
+    [
+      6.95313516,
+      -0.0,
+      0.0
+    ],
+    [
+      -0.0,
+      6.953154270000001,
+      0.0
+    ],
+    [
+      -0.0,
+      0.0,
+      6.95310116
+    ]
+  ],
+  "defect_region_radius": 5.3968987465,
+  "defect_frac_coords": [
+    0.4994597265163212,
+    0.6087160096435701,
+    0.5579506571342066
+  ],
+  "point group": {
+    "perfect": {
+      "Hermann-Mauguin": "-43m",
+      "Schoenflies": "T_d"
+    },
+    "defect": {
+      "Hermann-Mauguin": "m",
+      "Schoenflies": "C_s"
+    }
+  },
+  "energy_corrections": {
+    "pc term": 2.4497093410353785,
+    "alignment term": -0.5476276024814064,
+    "correction energy": 1.9020817385539721
+  },
+  "sites": [
+    {
+      "specie": "B",
+      "distance": 8.34525472745858,
+      "potential": 0.2480000000000011,
+      "pc_potential": 0.4434463466767417
+    },
+    {
+      "specie": "B",
+      "distance": 7.262688204150589,
+      "potential": 0.26839999999999975,
+      "pc_potential": 0.36791175061982906
+    },
+    {
+      "specie": "B",
+      "distance": 6.948684868620564,
+      "potential": 0.10239999999999938,
+      "pc_potential": 0.32369068625893743
+    },
+    {
+      "specie": "B",
+      "distance": 7.788329015417657,
+      "potential": 0.1341000000000001,
+      "pc_potential": 0.40386456455767206
+    },
+    {
+      "specie": "B",
+      "distance": 6.614768124202985,
+      "potential": 0.1554000000000002,
+      "pc_potential": 0.30652611076456027
+    },
+    {
+      "specie": "B",
+      "distance": 6.268014351465607,
+      "potential": 0.05250000000000199,
+      "pc_potential": 0.24778759955624072
+    },
+    {
+      "specie": "B",
+      "distance": 7.22420796943245,
+      "potential": 0.12460000000000093,
+      "pc_potential": 0.33158571992169095
+    },
+    {
+      "specie": "B",
+      "distance": 5.943786081286386,
+      "potential": 0.1997,
+      "pc_potential": 0.1889337522084433
+    },
+    {
+      "specie": "B",
+      "distance": 5.551802517553436,
+      "potential": 0.0992999999999995,
+      "pc_potential": 0.09979296619818392
+    },
+    {
+      "specie": "B",
+      "distance": 6.618750137982623,
+      "potential": 0.13870000000000005,
+      "pc_potential": 0.33470390631922214
+    },
+    {
+      "specie": "B",
+      "distance": 5.194791497295865,
+      "potential": 0.22320000000000206,
+      "pc_potential": 0.18152274893929787
+    },
+    {
+      "specie": "B",
+      "distance": 4.7429035614413,
+      "potential": 0.12020000000000053,
+      "pc_potential": 0.08224651165356305
+    },
+    {
+      "specie": "B",
+      "distance": 5.900521096606588,
+      "potential": -0.1150999999999982,
+      "pc_potential": 0.2611995150294207
+    },
+    {
+      "specie": "B",
+      "distance": 4.225012632149087,
+      "potential": 0.0472999999999999,
+      "pc_potential": -0.0007169631272713722
+    },
+    {
+      "specie": "B",
+      "distance": 3.6428419261594582,
+      "potential": -0.8826999999999998,
+      "pc_potential": -0.20369751427902041
+    },
+    {
+      "specie": "B",
+      "distance": 5.117157951104082,
+      "potential": -0.0015999999999998238,
+      "pc_potential": 0.11335641981267658
+    },
+    {
+      "specie": "B",
+      "distance": 3.1112365202722403,
+      "potential": 0.2785000000000011,
+      "pc_potential": -0.4607559353965934
+    },
+    {
+      "specie": "B",
+      "distance": 2.2584725762759397,
+      "potential": -0.4955999999999996,
+      "pc_potential": -1.1697667528992515
+    },
+    {
+      "specie": "B",
+      "distance": 6.626759364508158,
+      "potential": 0.14890000000000114,
+      "pc_potential": 0.3355907083123864
+    },
+    {
+      "specie": "B",
+      "distance": 5.201130726891277,
+      "potential": 0.22000000000000242,
+      "pc_potential": 0.1830288978552197
+    },
+    {
+      "specie": "B",
+      "distance": 4.7520110280106636,
+      "potential": 0.13589999999999947,
+      "pc_potential": 0.08420663598873952
+    },
+    {
+      "specie": "B",
+      "distance": 5.882492984673037,
+      "potential": -0.03259999999999863,
+      "pc_potential": 0.2595377549654483
+    },
+    {
+      "specie": "B",
+      "distance": 4.255472703665886,
+      "potential": 0.007200000000000983,
+      "pc_potential": 0.00786547566963587
+    },
+    {
+      "specie": "B",
+      "distance": 3.618312898217617,
+      "potential": -0.8287999999999975,
+      "pc_potential": -0.2139626129711533
+    },
+    {
+      "specie": "B",
+      "distance": 5.138935141785548,
+      "potential": -0.05310000000000059,
+      "pc_potential": 0.11711673844473076
+    },
+    {
+      "specie": "B",
+      "distance": 3.123160680682317,
+      "potential": 0.3351000000000006,
+      "pc_potential": -0.4538082221662175
+    },
+    {
+      "specie": "B",
+      "distance": 2.298827687208486,
+      "potential": -0.5565999999999995,
+      "pc_potential": -1.1231979934790028
+    },
+    {
+      "specie": "B",
+      "distance": 7.647666810326694,
+      "potential": 0.1565000000000012,
+      "pc_potential": 0.4206941756448108
+    },
+    {
+      "specie": "B",
+      "distance": 6.4443422204466705,
+      "potential": 0.19560000000000244,
+      "pc_potential": 0.3313485441447506
+    },
+    {
+      "specie": "B",
+      "distance": 6.092514880448695,
+      "potential": -0.04899999999999949,
+      "pc_potential": 0.27894408241992097
+    },
+    {
+      "specie": "B",
+      "distance": 6.092514881862602,
+      "potential": -0.04899999999999949,
+      "pc_potential": 0.2789473745856924
+    },
+    {
+      "specie": "B",
+      "distance": 4.503498625347206,
+      "potential": 0.040300000000002,
+      "pc_potential": 0.05765485216814501
+    },
+    {
+      "specie": "B",
+      "distance": 3.96315337743393,
+      "potential": -0.1164999999999985,
+      "pc_potential": -0.10433773784600923
+    },
+    {
+      "specie": "B",
+      "distance": 6.444342219065196,
+      "potential": 0.19560000000000244,
+      "pc_potential": 0.3313505719258867
+    },
+    {
+      "specie": "B",
+      "distance": 4.976538057209903,
+      "potential": 0.2660000000000018,
+      "pc_potential": 0.167370323258927
+    },
+    {
+      "specie": "B",
+      "distance": 4.503498621438244,
+      "potential": 0.040300000000002,
+      "pc_potential": 0.05765328730937193
+    },
+    {
+      "specie": "B",
+      "distance": 6.746119585112724,
+      "potential": -0.08479999999999777,
+      "pc_potential": 0.31835463669286984
+    },
+    {
+      "specie": "B",
+      "distance": 5.354545628568081,
+      "potential": -0.014599999999997948,
+      "pc_potential": 0.16161756841606187
+    },
+    {
+      "specie": "B",
+      "distance": 4.895791220687424,
+      "potential": -0.192499999999999,
+      "pc_potential": 0.0590147263822055
+    },
+    {
+      "specie": "B",
+      "distance": 4.895791222440882,
+      "potential": -0.192499999999999,
+      "pc_potential": 0.059020563765934696
+    },
+    {
+      "specie": "B",
+      "distance": 2.7278234420253127,
+      "potential": 0.18909999999999982,
+      "pc_potential": -0.7229211978645831
+    },
+    {
+      "specie": "B",
+      "distance": 5.354545626899351,
+      "potential": -0.014599999999997948,
+      "pc_potential": 0.16162095965684045
+    },
+    {
+      "specie": "B",
+      "distance": 3.4628107295973565,
+      "potential": 0.30230000000000246,
+      "pc_potential": -0.27990222988599633
+    },
+    {
+      "specie": "B",
+      "distance": 2.7278234355626303,
+      "potential": 0.18909999999999982,
+      "pc_potential": -0.7229268904564503
+    },
+    {
+      "specie": "B",
+      "distance": 7.640378707544946,
+      "potential": 0.1844999999999999,
+      "pc_potential": 0.42051514400263457
+    },
+    {
+      "specie": "B",
+      "distance": 6.455569062893538,
+      "potential": 0.1869000000000014,
+      "pc_potential": 0.3323049619455462
+    },
+    {
+      "specie": "B",
+      "distance": 6.091398230946624,
+      "potential": -0.03979999999999961,
+      "pc_potential": 0.2787886795759104
+    },
+    {
+      "specie": "B",
+      "distance": 6.0913982323654166,
+      "potential": -0.03979999999999961,
+      "pc_potential": 0.27879197820489104
+    },
+    {
+      "specie": "B",
+      "distance": 4.515021784608046,
+      "potential": 0.05250000000000199,
+      "pc_potential": 0.06027327783354917
+    },
+    {
+      "specie": "B",
+      "distance": 3.962780352469467,
+      "potential": -0.13069999999999737,
+      "pc_potential": -0.10453904733190447
+    },
+    {
+      "specie": "B",
+      "distance": 6.45556906150954,
+      "potential": 0.1869000000000014,
+      "pc_potential": 0.3323069809674668
+    },
+    {
+      "specie": "B",
+      "distance": 4.97500138565142,
+      "potential": 0.27960000000000207,
+      "pc_potential": 0.16705280293695562
+    },
+    {
+      "specie": "B",
+      "distance": 4.515021780713659,
+      "potential": 0.05250000000000199,
+      "pc_potential": 0.060271730240373786
+    },
+    {
+      "specie": "B",
+      "distance": 6.972480159188607,
+      "potential": 0.2599000000000018,
+      "pc_potential": 0.39434468526062716
+    },
+    {
+      "specie": "B",
+      "distance": 5.590676720840288,
+      "potential": 0.177500000000002,
+      "pc_potential": 0.23475799262659264
+    },
+    {
+      "specie": "B",
+      "distance": 6.293481848043463,
+      "potential": 0.14380000000000237,
+      "pc_potential": 0.3391405042979055
+    },
+    {
+      "specie": "B",
+      "distance": 6.293481850400971,
+      "potential": 0.14380000000000237,
+      "pc_potential": 0.33914164604421443
+    },
+    {
+      "specie": "B",
+      "distance": 4.710574252561153,
+      "potential": -0.041799999999998505,
+      "pc_potential": 0.10256639107422891
+    },
+    {
+      "specie": "B",
+      "distance": 5.535173798563848,
+      "potential": -0.09769999999999968,
+      "pc_potential": 0.26141393659932594
+    },
+    {
+      "specie": "B",
+      "distance": 5.590676719292502,
+      "potential": 0.177500000000002,
+      "pc_potential": 0.23476145641337837
+    },
+    {
+      "specie": "B",
+      "distance": 3.710993255903747,
+      "potential": 0.0619000000000014,
+      "pc_potential": -0.20200929348615823
+    },
+    {
+      "specie": "B",
+      "distance": 4.710574247569626,
+      "potential": -0.041799999999998505,
+      "pc_potential": 0.10256900036224165
+    },
+    {
+      "specie": "B",
+      "distance": 5.9815670864653745,
+      "potential": 0.10710000000000264,
+      "pc_potential": 0.27292790998455174
+    },
+    {
+      "specie": "B",
+      "distance": 4.276249881510548,
+      "potential": 0.16329999999999956,
+      "pc_potential": -0.050223552773753455
+    },
+    {
+      "specie": "B",
+      "distance": 5.1767467721157665,
+      "potential": 0.05620000000000047,
+      "pc_potential": 0.17023432377642758
+    },
+    {
+      "specie": "B",
+      "distance": 5.176746774985245,
+      "potential": 0.05620000000000047,
+      "pc_potential": 0.17023625347673174
+    },
+    {
+      "specie": "B",
+      "distance": 3.0056597899058923,
+      "potential": -0.7790999999999997,
+      "pc_potential": -0.5362341151413269
+    },
+    {
+      "specie": "B",
+      "distance": 4.155149653891841,
+      "potential": -0.9246999999999979,
+      "pc_potential": -0.029664251123302204
+    },
+    {
+      "specie": "B",
+      "distance": 4.276249879487227,
+      "potential": 0.16329999999999956,
+      "pc_potential": -0.05021679892721426
+    },
+    {
+      "specie": "B",
+      "distance": 3.0056597821544937,
+      "potential": -0.7790999999999997,
+      "pc_potential": -0.5362260999413363
+    },
+    {
+      "specie": "B",
+      "distance": 6.976856351693334,
+      "potential": 0.2615000000000016,
+      "pc_potential": 0.39464533808125424
+    },
+    {
+      "specie": "B",
+      "distance": 5.595082174553628,
+      "potential": 0.16890000000000072,
+      "pc_potential": 0.23537057480363913
+    },
+    {
+      "specie": "B",
+      "distance": 6.3006352673113195,
+      "potential": 0.15900000000000247,
+      "pc_potential": 0.3396969781209381
+    },
+    {
+      "specie": "B",
+      "distance": 6.3006352696634496,
+      "potential": 0.15900000000000247,
+      "pc_potential": 0.3396981224764447
+    },
+    {
+      "specie": "B",
+      "distance": 4.72746584963954,
+      "potential": -0.05799999999999983,
+      "pc_potential": 0.10597635301558918
+    },
+    {
+      "specie": "B",
+      "distance": 5.516469766207055,
+      "potential": -0.034499999999997755,
+      "pc_potential": 0.2587924435262477
+    },
+    {
+      "specie": "B",
+      "distance": 5.595082173008545,
+      "potential": 0.16890000000000072,
+      "pc_potential": 0.2353740299247971
+    },
+    {
+      "specie": "B",
+      "distance": 3.70453991230591,
+      "potential": 0.09789999999999921,
+      "pc_potential": -0.20455385921483143
+    },
+    {
+      "specie": "B",
+      "distance": 4.727465844655155,
+      "potential": -0.05799999999999983,
+      "pc_potential": 0.10597895352365588
+    },
+    {
+      "specie": "B",
+      "distance": 8.345254724872845,
+      "potential": 0.2480000000000011,
+      "pc_potential": 0.44344611497859615
+    },
+    {
+      "specie": "B",
+      "distance": 7.224207967640098,
+      "potential": 0.12460000000000093,
+      "pc_potential": 0.3315828089666334
+    },
+    {
+      "specie": "B",
+      "distance": 7.788329010744227,
+      "potential": 0.1341000000000001,
+      "pc_potential": 0.4038634048017357
+    },
+    {
+      "specie": "B",
+      "distance": 6.948684866755825,
+      "potential": 0.10239999999999938,
+      "pc_potential": 0.32369312700114483
+    },
+    {
+      "specie": "B",
+      "distance": 5.5518025167754335,
+      "potential": 0.0992999999999995,
+      "pc_potential": 0.099792663113614
+    },
+    {
+      "specie": "B",
+      "distance": 6.268014347032798,
+      "potential": 0.05250000000000199,
+      "pc_potential": 0.24778916644069807
+    },
+    {
+      "specie": "B",
+      "distance": 7.262688199951101,
+      "potential": 0.26839999999999975,
+      "pc_potential": 0.3679131806426535
+    },
+    {
+      "specie": "B",
+      "distance": 5.943786077606432,
+      "potential": 0.1997,
+      "pc_potential": 0.18893238462497014
+    },
+    {
+      "specie": "B",
+      "distance": 6.614768117346409,
+      "potential": 0.1554000000000002,
+      "pc_potential": 0.30652662080468407
+    },
+    {
+      "specie": "B",
+      "distance": 6.618750134723042,
+      "potential": 0.13870000000000005,
+      "pc_potential": 0.33470352711504775
+    },
+    {
+      "specie": "B",
+      "distance": 5.117157948585529,
+      "potential": -0.0015999999999998238,
+      "pc_potential": 0.11335095838168895
+    },
+    {
+      "specie": "B",
+      "distance": 5.9005210904322,
+      "potential": -0.1150999999999982,
+      "pc_potential": 0.26119754575658205
+    },
+    {
+      "specie": "B",
+      "distance": 4.74290355870606,
+      "potential": 0.12020000000000053,
+      "pc_potential": 0.08225130325547335
+    },
+    {
+      "specie": "B",
+      "distance": 2.2584725743796583,
+      "potential": -0.4955999999999996,
+      "pc_potential": -1.169769031592288
+    },
+    {
+      "specie": "B",
+      "distance": 3.6428419185706677,
+      "potential": -0.8826999999999998,
+      "pc_potential": -0.2036933952126827
+    },
+    {
+      "specie": "B",
+      "distance": 5.194791491423012,
+      "potential": 0.22320000000000206,
+      "pc_potential": 0.1815253619360788
+    },
+    {
+      "specie": "B",
+      "distance": 3.111236513190462,
+      "potential": 0.2785000000000011,
+      "pc_potential": -0.4607608385238356
+    },
+    {
+      "specie": "B",
+      "distance": 4.225012621444834,
+      "potential": 0.0472999999999999,
+      "pc_potential": -0.0007158322094501939
+    },
+    {
+      "specie": "B",
+      "distance": 6.626759361250602,
+      "potential": 0.14890000000000114,
+      "pc_potential": 0.33559033565591445
+    },
+    {
+      "specie": "B",
+      "distance": 5.138935139266397,
+      "potential": -0.05310000000000059,
+      "pc_potential": 0.11711132129655598
+    },
+    {
+      "specie": "B",
+      "distance": 5.882492978507109,
+      "potential": -0.03259999999999863,
+      "pc_potential": 0.2595357659301733
+    },
+    {
+      "specie": "B",
+      "distance": 4.752011025279514,
+      "potential": 0.13589999999999947,
+      "pc_potential": 0.0842114125055987
+    },
+    {
+      "specie": "B",
+      "distance": 2.2988276852712928,
+      "potential": -0.5565999999999995,
+      "pc_potential": -1.1232004552560786
+    },
+    {
+      "specie": "B",
+      "distance": 3.6183128906416546,
+      "potential": -0.8287999999999975,
+      "pc_potential": -0.21395834596263918
+    },
+    {
+      "specie": "B",
+      "distance": 5.201130721022401,
+      "potential": 0.22000000000000242,
+      "pc_potential": 0.18303149167770338
+    },
+    {
+      "specie": "B",
+      "distance": 3.1231606736230444,
+      "potential": 0.3351000000000006,
+      "pc_potential": -0.45381309094608635
+    },
+    {
+      "specie": "B",
+      "distance": 4.255472692985403,
+      "potential": 0.007200000000000983,
+      "pc_potential": 0.007866605502302611
+    },
+    {
+      "specie": "N",
+      "distance": 8.523267276823285,
+      "potential": 0.25909999999999656,
+      "pc_potential": 0.4516476503294959
+    },
+    {
+      "specie": "N",
+      "distance": 6.983266574045658,
+      "potential": 0.232999999999997,
+      "pc_potential": 0.3425374504473128
+    },
+    {
+      "specie": "N",
+      "distance": 7.122457636825158,
+      "potential": 0.12409999999999854,
+      "pc_potential": 0.3617348909496152
+    },
+    {
+      "specie": "N",
+      "distance": 7.122457642158783,
+      "potential": 0.12409999999999854,
+      "pc_potential": 0.36173704532107887
+    },
+    {
+      "specie": "N",
+      "distance": 5.18405182552065,
+      "potential": 0.1109999999999971,
+      "pc_potential": 0.1588628393228941
+    },
+    {
+      "specie": "N",
+      "distance": 5.3736617195793315,
+      "potential": -0.004200000000004422,
+      "pc_potential": 0.19679375879229916
+    },
+    {
+      "specie": "N",
+      "distance": 6.983266580730269,
+      "potential": 0.232999999999997,
+      "pc_potential": 0.3425400798649006
+    },
+    {
+      "specie": "N",
+      "distance": 4.992941678349743,
+      "potential": 0.20830000000000126,
+      "pc_potential": 0.116846403054449
+    },
+    {
+      "specie": "N",
+      "distance": 5.184051827189214,
+      "potential": 0.1109999999999971,
+      "pc_potential": 0.15886337354808142
+    },
+    {
+      "specie": "N",
+      "distance": 7.295060254917184,
+      "potential": 0.12339999999999662,
+      "pc_potential": 0.3408175975993698
+    },
+    {
+      "specie": "N",
+      "distance": 5.419829223585866,
+      "potential": 0.13769999999999527,
+      "pc_potential": 0.12552253251676695
+    },
+    {
+      "specie": "N",
+      "distance": 5.600792038394879,
+      "potential": -0.001300000000000523,
+      "pc_potential": 0.16539890115234598
+    },
+    {
+      "specie": "N",
+      "distance": 5.600792045186374,
+      "potential": -0.001300000000000523,
+      "pc_potential": 0.16540291254336947
+    },
+    {
+      "specie": "N",
+      "distance": 2.7245069745135426,
+      "potential": -0.19780000000000086,
+      "pc_potential": -0.72124342771233
+    },
+    {
+      "specie": "N",
+      "distance": 3.196968448732944,
+      "potential": -2.884599999999999,
+      "pc_potential": -0.4098262765006727
+    },
+    {
+      "specie": "N",
+      "distance": 5.41982923219707,
+      "potential": 0.13769999999999527,
+      "pc_potential": 0.12552754107419403
+    },
+    {
+      "specie": "N",
+      "distance": 2.431682958011977,
+      "potential": 0.3170999999999964,
+      "pc_potential": -0.9805706342500434
+    },
+    {
+      "specie": "N",
+      "distance": 2.7245069776809996,
+      "potential": -0.19780000000000086,
+      "pc_potential": -0.7212409446348774
+    },
+    {
+      "specie": "N",
+      "distance": 7.7361099556876445,
+      "potential": 0.21999999999999886,
+      "pc_potential": 0.3975151321225412
+    },
+    {
+      "specie": "N",
+      "distance": 5.9911582220868915,
+      "potential": 0.15849999999999653,
+      "pc_potential": 0.24042051954842267
+    },
+    {
+      "specie": "N",
+      "distance": 6.156625164819117,
+      "potential": 0.0940000000000012,
+      "pc_potential": 0.26823681639510966
+    },
+    {
+      "specie": "N",
+      "distance": 6.156625171001121,
+      "potential": 0.0940000000000012,
+      "pc_potential": 0.2682398150441406
+    },
+    {
+      "specie": "N",
+      "distance": 3.7881953468621035,
+      "potential": -0.19810000000000372,
+      "pc_potential": -0.14236375902767548
+    },
+    {
+      "specie": "N",
+      "distance": 3.9830762396759303,
+      "potential": -0.4192999999999998,
+      "pc_potential": -0.07209484129343789
+    },
+    {
+      "specie": "N",
+      "distance": 5.991158229872145,
+      "potential": 0.15849999999999653,
+      "pc_potential": 0.24042420577634907
+    },
+    {
+      "specie": "N",
+      "distance": 3.462787361302037,
+      "potential": 0.3089000000000013,
+      "pc_potential": -0.27823577666931265
+    },
+    {
+      "specie": "N",
+      "distance": 3.788195349171776,
+      "potential": -0.19810000000000372,
+      "pc_potential": -0.14236273975205704
+    },
+    {
+      "specie": "N",
+      "distance": 6.9640141364522945,
+      "potential": 0.06869999999999976,
+      "pc_potential": 0.3643380067333985
+    },
+    {
+      "specie": "N",
+      "distance": 4.95774263148349,
+      "potential": 0.055499999999995,
+      "pc_potential": 0.15142212479394215
+    },
+    {
+      "specie": "N",
+      "distance": 5.187356717580829,
+      "potential": -0.392000000000003,
+      "pc_potential": 0.19670965627709217
+    },
+    {
+      "specie": "N",
+      "distance": 5.795674110334314,
+      "potential": 0.07039999999999935,
+      "pc_potential": 0.20130961210280177
+    },
+    {
+      "specie": "N",
+      "distance": 3.1474525883611593,
+      "potential": -0.12760000000000105,
+      "pc_potential": -0.44380781612471587
+    },
+    {
+      "specie": "N",
+      "distance": 3.4455843607468895,
+      "potential": -0.38759999999999906,
+      "pc_potential": -0.28902450854094536
+    },
+    {
+      "specie": "N",
+      "distance": 6.674907042354143,
+      "potential": 0.1968999999999994,
+      "pc_potential": 0.33783424818874164
+    },
+    {
+      "specie": "N",
+      "distance": 4.55997574748119,
+      "potential": 0.20819999999999794,
+      "pc_potential": 0.07963280777296695
+    },
+    {
+      "specie": "N",
+      "distance": 4.7579631792797885,
+      "potential": 0.08909999999999485,
+      "pc_potential": 0.12740500667002944
+    },
+    {
+      "specie": "N",
+      "distance": 6.4899465799961495,
+      "potential": 0.03340000000000032,
+      "pc_potential": 0.2973683911800687
+    },
+    {
+      "specie": "N",
+      "distance": 4.291087537857689,
+      "potential": -0.3196000000000012,
+      "pc_potential": -0.015651265564874346
+    },
+    {
+      "specie": "N",
+      "distance": 4.476860616828896,
+      "potential": -0.47220000000000084,
+      "pc_potential": 0.03852015940751348
+    },
+    {
+      "specie": "N",
+      "distance": 5.209610403030492,
+      "potential": 0.005699999999997374,
+      "pc_potential": 0.07264131310415815
+    },
+    {
+      "specie": "N",
+      "distance": 1.9012453326664625,
+      "potential": 0.23120000000000118,
+      "pc_potential": -1.6718951996245328
+    },
+    {
+      "specie": "N",
+      "distance": 2.3721878075588734,
+      "potential": -2.670100000000005,
+      "pc_potential": -1.0451689147438765
+    },
+    {
+      "specie": "N",
+      "distance": 6.174585864159766,
+      "potential": 0.11769999999999925,
+      "pc_potential": 0.2624977827786976
+    },
+    {
+      "specie": "N",
+      "distance": 3.7723579559443965,
+      "potential": 0.25150000000000006,
+      "pc_potential": -0.16319906801194842
+    },
+    {
+      "specie": "N",
+      "distance": 4.0427137542405465,
+      "potential": 0.07489999999999952,
+      "pc_potential": -0.06702871934294317
+    },
+    {
+      "specie": "N",
+      "distance": 7.844780149912008,
+      "potential": 0.17649999999999721,
+      "pc_potential": 0.428516148759207
+    },
+    {
+      "specie": "N",
+      "distance": 6.1469871772939335,
+      "potential": 0.0987000000000009,
+      "pc_potential": 0.2986461560792704
+    },
+    {
+      "specie": "N",
+      "distance": 6.290822326474549,
+      "potential": 0.03889999999999816,
+      "pc_potential": 0.3206869542705323
+    },
+    {
+      "specie": "N",
+      "distance": 6.828726728501092,
+      "potential": 0.10309999999999775,
+      "pc_potential": 0.3180652915469493
+    },
+    {
+      "specie": "N",
+      "distance": 4.766605869676379,
+      "potential": 0.12449999999999761,
+      "pc_potential": 0.059438470868867124
+    },
+    {
+      "specie": "N",
+      "distance": 4.970954342931728,
+      "potential": -0.006300000000003081,
+      "pc_potential": 0.10887867643604249
+    },
+    {
+      "specie": "N",
+      "distance": 7.589115204205336,
+      "potential": 0.23089999999999833,
+      "pc_potential": 0.4103334631095169
+    },
+    {
+      "specie": "N",
+      "distance": 5.804207999333337,
+      "potential": 0.22520000000000095,
+      "pc_potential": 0.2610363537172431
+    },
+    {
+      "specie": "N",
+      "distance": 5.981642389558735,
+      "potential": 0.12639999999999674,
+      "pc_potential": 0.28877443634973265
+    },
+    {
+      "specie": "N",
+      "distance": 6.67490703471635,
+      "potential": 0.1968999999999994,
+      "pc_potential": 0.33783291443243146
+    },
+    {
+      "specie": "N",
+      "distance": 5.795674102514837,
+      "potential": 0.07039999999999935,
+      "pc_potential": 0.20130494806040916
+    },
+    {
+      "specie": "N",
+      "distance": 6.964014131619883,
+      "potential": 0.06869999999999976,
+      "pc_potential": 0.36433727760358636
+    },
+    {
+      "specie": "N",
+      "distance": 4.757963176556861,
+      "potential": 0.08909999999999485,
+      "pc_potential": 0.12740691908102103
+    },
+    {
+      "specie": "N",
+      "distance": 3.4455843586140644,
+      "potential": -0.38759999999999906,
+      "pc_potential": -0.2890273859639809
+    },
+    {
+      "specie": "N",
+      "distance": 5.187356718421481,
+      "potential": -0.392000000000003,
+      "pc_potential": 0.19671209094981382
+    },
+    {
+      "specie": "N",
+      "distance": 4.559975746529881,
+      "potential": 0.20819999999999794,
+      "pc_potential": 0.07963561551055763
+    },
+    {
+      "specie": "N",
+      "distance": 3.147452588811964,
+      "potential": -0.12760000000000105,
+      "pc_potential": -0.4438098020752005
+    },
+    {
+      "specie": "N",
+      "distance": 4.957742634094962,
+      "potential": 0.055499999999995,
+      "pc_potential": 0.15142537843145476
+    },
+    {
+      "specie": "N",
+      "distance": 6.174585855905831,
+      "potential": 0.11769999999999925,
+      "pc_potential": 0.2624960642460426
+    },
+    {
+      "specie": "N",
+      "distance": 5.209610394337049,
+      "potential": 0.005699999999997374,
+      "pc_potential": 0.0726349187396689
+    },
+    {
+      "specie": "N",
+      "distance": 6.489946574796365,
+      "potential": 0.03340000000000032,
+      "pc_potential": 0.2973674471654383
+    },
+    {
+      "specie": "N",
+      "distance": 4.042713751019516,
+      "potential": 0.07489999999999952,
+      "pc_potential": -0.06702579976392342
+    },
+    {
+      "specie": "N",
+      "distance": 2.3721878047401512,
+      "potential": -2.670100000000005,
+      "pc_potential": -1.0451774760064867
+    },
+    {
+      "specie": "N",
+      "distance": 4.476860617794449,
+      "potential": -0.47220000000000084,
+      "pc_potential": 0.038523681281242214
+    },
+    {
+      "specie": "N",
+      "distance": 3.772357954799291,
+      "potential": 0.25150000000000006,
+      "pc_potential": -0.16319452007144833
+    },
+    {
+      "specie": "N",
+      "distance": 1.9012453331592927,
+      "potential": 0.23120000000000118,
+      "pc_potential": -1.671903794459615
+    },
+    {
+      "specie": "N",
+      "distance": 4.2910875409023355,
+      "potential": -0.3196000000000012,
+      "pc_potential": -0.015646504368533994
+    },
+    {
+      "specie": "N",
+      "distance": 7.589115197488889,
+      "potential": 0.23089999999999833,
+      "pc_potential": 0.4103324825376405
+    },
+    {
+      "specie": "N",
+      "distance": 6.828726721871339,
+      "potential": 0.10309999999999775,
+      "pc_potential": 0.3180620405860819
+    },
+    {
+      "specie": "N",
+      "distance": 7.844780145612096,
+      "potential": 0.17649999999999721,
+      "pc_potential": 0.4285156008684138
+    },
+    {
+      "specie": "N",
+      "distance": 5.981642387389086,
+      "potential": 0.12639999999999674,
+      "pc_potential": 0.2887756643799245
+    },
+    {
+      "specie": "N",
+      "distance": 4.970954341470272,
+      "potential": -0.006300000000003081,
+      "pc_potential": 0.10887738887194585
+    },
+    {
+      "specie": "N",
+      "distance": 6.290822327160853,
+      "potential": 0.03889999999999816,
+      "pc_potential": 0.3206886011108347
+    },
+    {
+      "specie": "N",
+      "distance": 5.80420799859039,
+      "potential": 0.22520000000000095,
+      "pc_potential": 0.2610380869399766
+    },
+    {
+      "specie": "N",
+      "distance": 4.76660586996363,
+      "potential": 0.12449999999999761,
+      "pc_potential": 0.05943770664853657
+    },
+    {
+      "specie": "N",
+      "distance": 6.146987179406561,
+      "potential": 0.0987000000000009,
+      "pc_potential": 0.29864829460998704
+    },
+    {
+      "specie": "N",
+      "distance": 6.799785797514047,
+      "potential": 0.22030000000000172,
+      "pc_potential": 0.37873173584847897
+    },
+    {
+      "specie": "N",
+      "distance": 5.947018531132281,
+      "potential": 0.07189999999999941,
+      "pc_potential": 0.2668756814682569
+    },
+    {
+      "specie": "N",
+      "distance": 7.093180222871841,
+      "potential": 0.09879999999999711,
+      "pc_potential": 0.401052330681369
+    },
+    {
+      "specie": "N",
+      "distance": 5.605530085363471,
+      "potential": 0.17649999999999721,
+      "pc_potential": 0.22542317952527977
+    },
+    {
+      "specie": "N",
+      "distance": 4.514049617837199,
+      "potential": 0.06139999999999901,
+      "pc_potential": -0.010067838332588615
+    },
+    {
+      "specie": "N",
+      "distance": 5.947018533084057,
+      "potential": 0.07189999999999941,
+      "pc_potential": 0.26687849647608913
+    },
+    {
+      "specie": "N",
+      "distance": 6.505240637436706,
+      "potential": 0.30239999999999867,
+      "pc_potential": 0.35409807406861266
+    },
+    {
+      "specie": "N",
+      "distance": 5.605530086379781,
+      "potential": 0.17649999999999721,
+      "pc_potential": 0.22542074111303206
+    },
+    {
+      "specie": "N",
+      "distance": 6.799785800053792,
+      "potential": 0.22030000000000172,
+      "pc_potential": 0.3787321771090783
+    },
+    {
+      "specie": "N",
+      "distance": 5.184918566446298,
+      "potential": 0.10470000000000113,
+      "pc_potential": 0.18662205719608188
+    },
+    {
+      "specie": "N",
+      "distance": 3.980107600317812,
+      "potential": -0.41629999999999967,
+      "pc_potential": -0.11677844792591908
+    },
+    {
+      "specie": "N",
+      "distance": 5.580477406141249,
+      "potential": -0.39350000000000307,
+      "pc_potential": 0.23990956207482686
+    },
+    {
+      "specie": "N",
+      "distance": 3.458406753355065,
+      "potential": 0.219699999999996,
+      "pc_potential": -0.2996132714660204
+    },
+    {
+      "specie": "N",
+      "distance": 1.1628144716314335,
+      "potential": -2.0016000000000034,
+      "pc_potential": -3.7239215658010907
+    },
+    {
+      "specie": "N",
+      "distance": 3.9801076032348264,
+      "potential": -0.41629999999999967,
+      "pc_potential": -0.11677159770764832
+    },
+    {
+      "specie": "N",
+      "distance": 4.802758722481471,
+      "potential": 0.25199999999999534,
+      "pc_potential": 0.12518125931068338
+    },
+    {
+      "specie": "N",
+      "distance": 3.4584067549967976,
+      "potential": 0.219699999999996,
+      "pc_potential": -0.2996205405465037
+    },
+    {
+      "specie": "N",
+      "distance": 5.184918569777949,
+      "potential": 0.10470000000000113,
+      "pc_potential": 0.18662288637201413
+    },
+    {
+      "specie": "N",
+      "distance": 5.789299636004216,
+      "potential": 0.14979999999999905,
+      "pc_potential": 0.2893318045951729
+    },
+    {
+      "specie": "N",
+      "distance": 4.762942492132616,
+      "potential": -0.3278000000000034,
+      "pc_potential": 0.10427072787709984
+    },
+    {
+      "specie": "N",
+      "distance": 6.101006099606819,
+      "potential": 0.05290000000000106,
+      "pc_potential": 0.32137430653234705
+    },
+    {
+      "specie": "N",
+      "distance": 4.316835396010801,
+      "potential": 0.20589999999999975,
+      "pc_potential": 0.012136076671371279
+    },
+    {
+      "specie": "N",
+      "distance": 2.745837668171657,
+      "potential": -0.22820000000000107,
+      "pc_potential": -0.7143605518599043
+    },
+    {
+      "specie": "N",
+      "distance": 4.7629424945658645,
+      "potential": -0.3278000000000034,
+      "pc_potential": 0.10427510678931821
+    },
+    {
+      "specie": "N",
+      "distance": 5.426126625251284,
+      "potential": 0.28000000000000114,
+      "pc_potential": 0.2467178486174604
+    },
+    {
+      "specie": "N",
+      "distance": 4.316835397330842,
+      "potential": 0.20589999999999975,
+      "pc_potential": 0.012131960540844372
+    },
+    {
+      "specie": "N",
+      "distance": 5.789299638992863,
+      "potential": 0.14979999999999905,
+      "pc_potential": 0.28933241272432936
+    }
+  ],
+  "charge_details": {
+    "species_counts": {
+      "B": 106,
+      "N": 108,
+      "Si": 1
+    },
+    "zval_per_species": {
+      "B": 3.0,
+      "N": 5.0,
+      "Si": 4.0
+    },
+    "nelect_reference": 862.0,
+    "nelect_defect": 865.0
+  }
+}

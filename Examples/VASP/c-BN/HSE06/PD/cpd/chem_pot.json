@@ -1,0 +1,28 @@
+{
+  "@module": "VASP",
+  "@class": "Chemical Potentials Summary",
+  "B": {
+    "compound": "B",
+    "total_energy_eV": -89.10929336,
+    "num_atoms": 12,
+    "energy_per_atom_eV": -7.425774446666666
+  },
+  "BN": {
+    "compound": "BN",
+    "total_energy_eV": -20.36481551,
+    "num_atoms": 2,
+    "energy_per_atom_eV": -10.182407755
+  },
+  "N": {
+    "compound": "N",
+    "total_energy_eV": -20.47960714,
+    "num_atoms": 2,
+    "energy_per_atom_eV": -10.23980357
+  },
+  "Si": {
+    "compound": "Si",
+    "total_energy_eV": -12.57961588,
+    "num_atoms": 2,
+    "energy_per_atom_eV": -6.28980794
+  }
+}

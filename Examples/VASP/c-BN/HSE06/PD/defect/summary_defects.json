@@ -1,0 +1,228 @@
+{
+  "@module": "VASP",
+  "@class": "Defects Summary",
+  "band_edges": {
+    "VBM": 6.7056,
+    "CBM": 12.5198,
+    "gap": 5.8142000000000005
+  },
+  "perfect": {
+    "total_energy": {
+      "TOTEN": -2199.23797061
+    }
+  },
+  "defects": {
+    "V_B-Si_B": {
+      "V_B-Si_B_-3": {
+        "charge": -3,
+        "chemical_potentials": {
+          "defect": {
+            "B": -2,
+            "N": 0,
+            "Si": 1
+          },
+          "limits": {
+            "B-rich": {
+              "B": 0.0,
+              "N": -2.69773652601852,
+              "Si": 0.0
+            },
+            "N-rich": {
+              "N": 0.0,
+              "B": -2.69773652601852,
+              "Si": 0.0
+            }
+          },
+          "elementals": {
+            "B": -7.425774446666666,
+            "N": -10.23980357,
+            "Si": -6.28980794
+          }
+        },
+        "energy_corrections": {
+          "pc term": 2.4497093410353785,
+          "alignment term": -0.5476276024814064,
+          "correction energy": 1.9020817385539721
+        },
+        "total_energy": {
+          "TOTEN": -2151.17325885
+        }
+      },
+      "V_B-Si_B_-2": {
+        "charge": -2,
+        "chemical_potentials": {
+          "defect": {
+            "B": -2,
+            "N": 0,
+            "Si": 1
+          },
+          "limits": {
+            "B-rich": {
+              "B": 0.0,
+              "N": -2.69773652601852,
+              "Si": 0.0
+            },
+            "N-rich": {
+              "N": 0.0,
+              "B": -2.69773652601852,
+              "Si": 0.0
+            }
+          },
+          "elementals": {
+            "B": -7.425774446666666,
+            "N": -10.23980357,
+            "Si": -6.28980794
+          }
+        },
+        "energy_corrections": {
+          "pc term": 1.088759707126835,
+          "alignment term": -0.16973583917562268,
+          "correction energy": 0.9190238679512122
+        },
+        "total_energy": {
+          "TOTEN": -2163.47716235
+        }
+      },
+      "V_B-Si_B_-1": {
+        "charge": -1,
+        "chemical_potentials": {
+          "defect": {
+            "B": -2,
+            "N": 0,
+            "Si": 1
+          },
+          "limits": {
+            "B-rich": {
+              "B": 0.0,
+              "N": -2.69773652601852,
+              "Si": 0.0
+            },
+            "N-rich": {
+              "N": 0.0,
+              "B": -2.69773652601852,
+              "Si": 0.0
+            }
+          },
+          "elementals": {
+            "B": -7.425774446666666,
+            "N": -10.23980357,
+            "Si": -6.28980794
+          }
+        },
+        "energy_corrections": {
+          "pc term": 0.2721899267817087,
+          "alignment term": -0.03595679920258195,
+          "correction energy": 0.2362331275791268
+        },
+        "total_energy": {
+          "TOTEN": -2172.494346
+        }
+      },
+      "V_B-Si_B_0": {
+        "charge": 0,
+        "chemical_potentials": {
+          "defect": {
+            "B": -2,
+            "N": 0,
+            "Si": 1
+          },
+          "limits": {
+            "B-rich": {
+              "B": 0.0,
+              "N": -2.69773652601852,
+              "Si": 0.0
+            },
+            "N-rich": {
+              "N": 0.0,
+              "B": -2.69773652601852,
+              "Si": 0.0
+            }
+          },
+          "elementals": {
+            "B": -7.425774446666666,
+            "N": -10.23980357,
+            "Si": -6.28980794
+          }
+        },
+        "energy_corrections": {
+          "pc term": 0.0,
+          "alignment term": 0.0,
+          "correction energy": 0.0
+        },
+        "total_energy": {
+          "TOTEN": -2181.16444582
+        }
+      },
+      "V_B-Si_B_1": {
+        "charge": 1,
+        "chemical_potentials": {
+          "defect": {
+            "B": -2,
+            "N": 0,
+            "Si": 1
+          },
+          "limits": {
+            "B-rich": {
+              "B": 0.0,
+              "N": -2.69773652601852,
+              "Si": 0.0
+            },
+            "N-rich": {
+              "N": 0.0,
+              "B": -2.69773652601852,
+              "Si": 0.0
+            }
+          },
+          "elementals": {
+            "B": -7.425774446666666,
+            "N": -10.23980357,
+            "Si": -6.28980794
+          }
+        },
+        "energy_corrections": {
+          "pc term": 0.2721899267817087,
+          "alignment term": -0.01059163956330289,
+          "correction energy": 0.26159828721840583
+        },
+        "total_energy": {
+          "TOTEN": -2189.28899573
+        }
+      },
+      "V_B-Si_B_2": {
+        "charge": 2,
+        "chemical_potentials": {
+          "defect": {
+            "B": -2,
+            "N": 0,
+            "Si": 1
+          },
+          "limits": {
+            "B-rich": {
+              "B": 0.0,
+              "N": -2.69773652601852,
+              "Si": 0.0
+            },
+            "N-rich": {
+              "N": 0.0,
+              "B": -2.69773652601852,
+              "Si": 0.0
+            }
+          },
+          "elementals": {
+            "B": -7.425774446666666,
+            "N": -10.23980357,
+            "Si": -6.28980794
+          }
+        },
+        "energy_corrections": {
+          "pc term": 1.088759707126835,
+          "alignment term": -0.26283548049619254,
+          "correction energy": 0.8259242266306424
+        },
+        "total_energy": {
+          "TOTEN": -2196.12710183
+        }
+      }
+    }
+  }
+}

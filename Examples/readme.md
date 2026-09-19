@@ -25,6 +25,7 @@ After performing all the calculations, use the [chem_pot.py](https://github.com/
 After performing all the calculations, the following steps must be carried out for each folder (**N_C-V_C_-3**, **N_C-V_C_-2**, **N_C-V_C_-1**, **N_C-V_C_0**, **N_C-V_C_1**, and **N_C-V_C_2**), except for the **perfect** folder. For example, in the [N_C-V_C_-1](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/diamond/PBE/PD/defect/N_C-V_C_-1) folder:
 
 - Use the [corrections.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/corrections.py) script to extract the **charge state**, **lattice parameters**, **dielectric tensor**, **defect coordinates**, **point group for the defect**, **energy corrections**, and **potentials**. This information is saved in a **correction.json** file. This script works together with the [efnv_corrections.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/efnv_corrections.py) script.
+  
 - Use the [corrections_plot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/corrections_plot.py) script to plot the potential alignment. This script works together with the [efnv_corrections.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/efnv_corrections.py) script.
 
   ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/VASP/diamond/PBE/PD/defect/N_C-V_C_-1/correction_plot.png)
@@ -41,7 +42,7 @@ After performing all the calculations, the following steps must be carried out f
 
   ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/VASP/c-BN/HSE06/PD/defect/V_B-Si_B_-1/eigenplot_localization-IPR.png)
 
-- If the **WAVECAR** have been saved, use the [ks-orbital.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/ks-orbital.py) script to extract the wavefunction of a desired band at a given k-point and spin channel. Check the example in the [V_B-Si_B_0](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/c-BN/HSE06/PD/defect/V_B-Si_B_0) folder, where the wavefunctions, such as **wfc_s2_k1_b430_r.vasp**, **wfc_s2_k1_b431_r.vasp**, and so on, are saved. These files can be used to determine the symmetry of the wavefunction for a given orbital with an assigned band number using the point group of the defect site, by inspecting how the isosurface transforms under the symmetry operations of that point group. For this purpose, the [point_groups.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/point_groups.py) script can be used, which works together with the [point_groups_lib.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/point_groups_lib.py) script.
+- If the **WAVECAR** file have been saved, use the [ks-orbital.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/ks-orbital.py) script to extract the wavefunction of a desired band at a given k-point and spin channel. Check the example in the [V_B-Si_B_0](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/c-BN/HSE06/PD/defect/V_B-Si_B_0) folder, where the wavefunctions, such as **wfc_s2_k1_b430_r.vasp**, **wfc_s2_k1_b431_r.vasp**, and so on, are saved. These files can be used to determine the symmetry of the wavefunction for a given orbital with an assigned band number using the point group of the defect site, by inspecting how the isosurface transforms under the symmetry operations of that point group. For this purpose, the [point_groups.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/point_groups.py) script can be used, which works together with the [point_groups_lib.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/point_groups_lib.py) script.
 
 
 After parsing all the folders, use the [sum_defects.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/sum_defects.py) script to collect all the information into a **summary_defects.json** file. Finally, plot the formation energy diagram using the [formation_energy.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/formation_energy.py) script.
@@ -67,13 +68,55 @@ Check an example in the [CCD - diamond](https://github.com/JosephPVera/Localized
 ## 2.1. Folder tree
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/Figures/qe.png)
 
-## 1.2. PD folder
+## 2.2. PD folder
 
 ### 2.2.1. Primitive folder
-After performing all the calculations, use the [primitive.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/primitive.py) script with the **--qe** tag to extract the **VBM**, **CBM**, **gap**, and **dielectric tensor contributions**. This information is saved in a **primitive.json** file.
+After performing all the calculations, use the [primitive.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/primitive.py) script with the **--qe** tag to extract the **VBM**, **CBM**, **gap**, and **dielectric tensor contributions**. This information is saved in a **primitive.json** file. Check an example in the [primitive - diamond](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/PD/primitive) folder.
 
 ### 2.2.2. Competing phases (cpd) folder
-After performing all the calculations, use the [chem_pot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/chem_pot.py) script with the **--qe** tag to extract the **compound**, **total energy**, **number of atoms**, and **total energy per atom**. This information is saved in a **chem_pot.json** file.
+After performing all the calculations, use the [chem_pot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/chem_pot.py) script with the **--qe** tag to extract the **compound**, **total energy**, **number of atoms**, and **total energy per atom**. This information is saved in a **chem_pot.json** file. Check an example in the [cpd - diamond](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/PD/cpd) folder.
 
 ### 2.2.3. Defect folder
-After performing all the calculations, the following steps must be carried out for each folder (**N_C-V_C_-3**, **N_C-V_C_-2**, **N_C-V_C_-1**, **N_C-V_C_0**, **N_C-V_C_1**, and **N_C-V_C_2**), except for the **perfect** folder. For example, in the [N_C-V_C_-1](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/diamond/PBE/PD/defect/N_C-V_C_-1) folder:
+After performing all the calculations, the following steps must be carried out for each folder (**N_C-V_C_-3**, **N_C-V_C_-2**, **N_C-V_C_-1**, **N_C-V_C_0**, **N_C-V_C_1**, and **N_C-V_C_2**), except for the **perfect** folder. For example, in the [N_C-V_C_-1](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/PD/defect/N_C-V_C_-1) folder:
+
+- Use the [corrections.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/corrections.py) script with the **--qe** tag to extract the **charge state**, **lattice parameters**, **dielectric tensor**, **defect coordinates**, **point group for the defect**, **energy corrections**, and **potentials**. This information is saved in a **correction.json** file. This script works together with the [efnv_corrections.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/efnv_corrections.py) script.
+
+- Use the [corrections_plot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/corrections_plot.py) script to plot the potential alignment. This script works together with the [efnv_corrections.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/efnv_corrections.py) script.
+  
+  ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/QE/PBE/PD/defect/N_C-V_C_-1/correction_plot.png)
+  
+- Use the [qe_eig.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/qe_eig.py) script to plot the Kohn-Sham level diagram in the [nscf](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/PD/defect/N_C-V_C_-1/nscf) folder.
+  
+  ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/QE/PBE/PD/defect/N_C-V_C_-1/nscf/eigenplot_qe.png)
+
+- Use the [qe_loc.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/qe_loc.py) script to extract the information of the degree of localization using the Projected Density of States (PDOS) in the [pdos](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/PD/defect/N_C-V_C_-1/pdos) folder, such as [localization.dat](https://github.com/JosephPVera/Localized-States/blob/main/Examples/QE/PBE/PD/defect/N_C-V_C_-1/pdos/localization.dat) file.
+
+- Use the [qe_locplot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/qe_locplot.py) script to plot the degree of localization using the Projected Density of States (PDOS) in the [pdos](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/PD/defect/N_C-V_C_-1/pdos) folder.
+
+  ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/QE/PBE/PD/defect/N_C-V_C_-1/pdos/eigenplot_localization.png)
+
+- If the **wfcdw1.dat** and **wfcup1.dat** files have been saved in the **tmp/*.save** folder, use the [qe_ipr.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/qe_ipr.py) script to extract the information of the degree of localization using the Inverse Participation Ratio (IPR), such as [ipr.dat](https://github.com/JosephPVera/Localized-States/blob/main/Examples/QE/PBE/PD/defect/N_C-V_C_-1/pdos/ipr.dat) file.
+
+- Use the [qe_ipr_plot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/qe_ipr_plot.py) script to plot the degree of localization using the Inverse Participation Ratio (IPR).
+
+  ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/QE/PBE/PD/defect/N_C-V_C_-1/pdos/eigenplot_ipr.png)
+  
+- If the **wfcdw1.dat** and **wfcup1.dat** files have been saved in the **tmp/*.save** folder, the wavefunction of a desired band at a given k-point and spin channel can be extracted using the native Quantum ESPRESSO tools, as shown in the [wfc](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/PD/defect/N_C-V_C_-1/wfc) folder. Check the example in the [wfc-430-dw](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/PD/defect/N_C-V_C_-1/wfc/wfc-430-dw) folder, where the wavefunctions are saved in the **wfc_band430_dw.xsf** file. This file can be used to determine the symmetry of the wavefunction for a given orbital with an assigned band number using the point group of the defect site, by inspecting how the isosurface transforms under the symmetry operations of that point group. For this purpose, the [point_groups.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/point_groups.py) script with the **--qe** tag can be used, which works together with the [point_groups_lib.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/point_groups_lib.py) script.
+
+      
+After parsing all the folders, use the [sum_defects.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/sum_defects.py) script with the **--qe** tag to collect all the information into a **summary_defects.json** file. Finally, plot the formation energy diagram using the [formation_energy.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/formation_energy.py) script.
+
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/QE/PBE/PD/defect/formation_energy-1.png)
+
+Check an example in the [defect - diamond](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/PD/defect) folder.
+
+## 2.3. ZPL folder
+After performing the calculations, extract the total energies of the ground and excited states and compute the Zero-Phonon Line (ZPL). Check an example in the [ZPL - diamond](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/ZPL) folder.
+
+
+## 2.4. CCD folder
+Copy the ground and excited state relaxed structures from the **ZPL folder** (**.in** files from **scf** folder) and rename them **ground_state.in** and **excited_state.in**, respectively. Then, use the [ccd.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/ccd.py) script with the **--qe** tag to interpolate intermediate structures between the ground and excited states. Once all the calculations have been performed, use the [ccd-plot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/ccd-plot.py) script with the **--qe** tag to compute **ΔQ**, **ZPL**, **absorption and emission energy**, **anti-Stokes and Stokes shift**, **effective phonon modes**, **Huang-Rhys factor**, and **Debye-Waller factor**. This information is saved in a **ccd.dat** file. In addition, the Configuration Coordinate Diagram (CCD) is plotted.  
+
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/QE/PBE/CCD/PBE/ccd.png)
+
+Check an example in the [CCD - diamond](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/CCD) folder.

@@ -475,7 +475,7 @@ def print_decomposition(pg, decomposition, title):
     print(f"\n{title}")
     for irrep in pg.irreps:
         print(f"   {irrep:6s}: {decomposition.get(irrep, 0)}")
-    print(f"   => {summarize_decomposition(decomposition)}")
+    print(f"\n   => {summarize_decomposition(decomposition)}")
 
 def describe_multiplet(decomposition, n):
     """Physically interprets a decomposition of n bands (n = number of
@@ -490,18 +490,18 @@ def describe_multiplet(decomposition, n):
                     if round(mult) != 0]
     if len(contributing) == 1 and round(contributing[0][1]) == 1:
         irrep, _ = contributing[0]
-        return (f"Genuine multiplet: the {n} input band(s) form a single "
-                f"degenerate irrep '{irrep}' of dimension {n}, protected "
+        return (f"\nGenuine multiplet: the {n} input band(s) form a single "
+                f"degenerate irrep {irrep} of dimension {n}, protected "
                 f"by the symmetry of the group.")
     if len(contributing) == 1:
         irrep, mult = contributing[0]
-        return (f"The {n} input band(s) reduce to {mult} copy(ies) of the "
+        return (f"\nThe {n} input band(s) reduce to {mult} copy(ies) of the "
                 f"irrep '{irrep}' (multiplicity {mult} of an irrep whose "
                 f"dimension, multiplied by {mult}, gives the total {n}).")
     parts = ", ".join(f"{mult} x {irrep}" for irrep, mult in contributing)
-    return (f"ACCIDENTAL degeneracy: the {n} input band(s) do not form a "
+    return (f"\nACCIDENTAL degeneracy: the {n} input band(s) do not form a "
             f"single irrep of dimension {n}, but the sum of several "
-            f"distinct irreps ({parts}) -- i.e. it is not protected by "
+            f"distinct irreps ({parts}), i.e. it is not protected by "
             f"the symmetry of this group in this orientation.")
 
 # Generic subgroup engine: builds the parent group O_h (48 ops) and
@@ -846,7 +846,9 @@ def analyze_multiplet(grids, shape, center, pg, subgroup_catalog, s=None, transf
                   f"(max |<i|j>| off diagonal = {np.max(np.abs(off_diag)):.3f})")
 
     e_label = pg.class_labels[0]
-    print(f"\n--- Multiplet analysis (n={n} band(s), degeneracy order "
+    print()
+    print("#"*80)
+    print(f"Multiplet analysis (n={n} band(s), degeneracy order "
           f"sought = {n}) under {pg.name} "
           f"({len(embeddings)} candidate orientation(s)) ---")
     best = None
@@ -869,6 +871,7 @@ def analyze_multiplet(grids, shape, center, pg, subgroup_catalog, s=None, transf
 
     _, idx, measured, decomposition = best
     print(f"\n=> Best orientation: #{idx}")
+    print("#"*80)
     print_decomposition(pg, decomposition, f"Decomposition into irreps of {pg.name}:")
     print(f"   {describe_multiplet(decomposition, n)}")
     return measured, decomposition

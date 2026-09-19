@@ -35,6 +35,14 @@ After performing all the calculations, the following steps must be carried out f
   
 - Use the [locplot.py](https://github.com/JosephPVera/Localized-States/blob/main/locplot.py) script to plot the degree of localization using the Projected Density of States (PDOS).
 
+  ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/VASP/diamond/PBE/PD/defect/N_C-V_C_-1/eigenplot_localization.png)
+
+- If the **WAVECAR** have been saved, use the [ipr.py](https://github.com/JosephPVera/Localized-States/blob/main/ipr.py) script to plot the degree of localization using the Inverse Participation Ratio (IPR).
+
+  ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/VASP/c-BN/HSE06/PD/defect/V_B-Si_B_-1/eigenplot_localization-IPR.png)
+
+- If the **WAVECAR** have been saved, use the
+
 
 
 

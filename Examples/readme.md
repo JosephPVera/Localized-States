@@ -16,10 +16,10 @@ So far, these scripts have not been implemented in the LSPD package.
 ## 1.2. PD folder
 
 ### 1.2.1. Primitive folder
-After performing all the calculations, use the [primitive.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/primitive.py) script to extract the **VBM**, **CBM**, **gap**, and **dielectric tensor contributions**. This information is saved in a **primitive.json** file.
+After performing all the calculations, use the [primitive.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/primitive.py) script to extract the **VBM**, **CBM**, **gap**, and **dielectric tensor contributions**. This information is saved in a **primitive.json** file. Check the examples in the [primitive - diamond](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/diamond/PBE/PD/primitive) and [primitive -cBN](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/c-BN/HSE06/PD/primitive) folders.
 
 ### 1.2.2. Competing phases (cpd) folder
-After performing all the calculations, use the [chem_pot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/chem_pot.py) script to extract the **compound**, **total energy**, **number of atoms**, and **total energy per atom**. This information is saved in a **chem_pot.json** file.
+After performing all the calculations, use the [chem_pot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/chem_pot.py) script to extract the **compound**, **total energy**, **number of atoms**, and **total energy per atom**. This information is saved in a **chem_pot.json** file. Check the examples in the [cpd - diamond](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/diamond/PBE/PD/cpd) and [cpd -cBN](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/c-BN/HSE06/PD/cpd) folders.
 
 ### 1.2.3. Defect folder
 After performing all the calculations, the following steps must be carried out for each folder (**N_C-V_C_-3**, **N_C-V_C_-2**, **N_C-V_C_-1**, **N_C-V_C_0**, **N_C-V_C_1**, and **N_C-V_C_2**), except for the **perfect** folder. For example, in the [N_C-V_C_-1](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/diamond/PBE/PD/defect/N_C-V_C_-1) folder:
@@ -48,13 +48,17 @@ After parsing all the folders, use the [sum_defects.py](https://github.com/Josep
 
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/VASP/diamond/PBE/PD/defect/formation_energy-1.png)
 
+Check the examples in the [defect - diamond](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/diamond/PBE/PD/defect) and [defect -cBN](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/c-BN/HSE06/PD/defect) folders.
+
 ## 1.3. ZPL folder
-After performing the calculations, extract the total energies of the ground and excited states and compute the Zero-Phonon Line (ZPL).
+After performing the calculations, extract the total energies of the ground and excited states and compute the Zero-Phonon Line (ZPL). Check an example in the [ZPL - diamond](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/diamond/PBE/ZPL) folder.
 
 ## 1.4. CCD folder
 Copy the ground and excited state relaxed structures from the **ZPL folder** (**CONTCAR** files) and rename them **POSCAR_ground** and **POSCAR_excited**, respectively. Then, use the [ccd.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/ccd.py) script to interpolate intermediate structures between the ground and excited states. Once all the calculations have been performed, use the [ccd-plot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/ccd-plot.py) script to compute **ΔQ**, **ZPL**, **absorption and emission energy**, **anti-Stokes and Stokes shift**, **effective phonon modes**, **Huang-Rhys factor**, and **Debye-Waller factor**. This information is saved in a **ccd.dat** file. In addition, the Configuration Coordinate Diagram (CCD) is plotted.  
 
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/VASP/diamond/PBE/CCD/ccd.png)
+
+Check an example in the [CCD - diamond](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/diamond/PBE/CCD) folder.
 
 ---
 # 2. Quantum ESPRESSO software
@@ -62,3 +66,14 @@ Copy the ground and excited state relaxed structures from the **ZPL folder** (**
 
 ## 2.1. Folder tree
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/Figures/qe.png)
+
+## 1.2. PD folder
+
+### 2.2.1. Primitive folder
+After performing all the calculations, use the [primitive.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/primitive.py) script with the **--qe** tag to extract the **VBM**, **CBM**, **gap**, and **dielectric tensor contributions**. This information is saved in a **primitive.json** file.
+
+### 2.2.2. Competing phases (cpd) folder
+After performing all the calculations, use the [chem_pot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/chem_pot.py) script with the **--qe** tag to extract the **compound**, **total energy**, **number of atoms**, and **total energy per atom**. This information is saved in a **chem_pot.json** file.
+
+### 2.2.3. Defect folder
+After performing all the calculations, the following steps must be carried out for each folder (**N_C-V_C_-3**, **N_C-V_C_-2**, **N_C-V_C_-1**, **N_C-V_C_0**, **N_C-V_C_1**, and **N_C-V_C_2**), except for the **perfect** folder. For example, in the [N_C-V_C_-1](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/diamond/PBE/PD/defect/N_C-V_C_-1) folder:

@@ -20,28 +20,28 @@ The package contains a serie of scripts designed to perform a post-analysis when
 ## 2. Usage
 ### 2.1. Kohn-Sham states
 Plot the Kohn-Sham states with [eigenplot.py](https://github.com/JosephPVera/Localized-States/blob/main/eigenplot.py). Check the script to use rescaling, it can be changed to **res = 0** or **res = vbm**.
-![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/kohn-sham-states.png)
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Guide/Figures/kohn-sham-states.png)
 
 Use the **--band** tag to include band numbers in the gap.
-![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/kohn-sham-states-band.png)
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Guide/Figures/kohn-sham-states-band.png)
 
 Use the **--split** tag to split the degenerate states, this only works for the Gamma point.
-![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/kohn-sham-states-degenerate.png)
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Guide/Figures/kohn-sham-states-split.png)
 
 ### 2.2. Visualize the localized states
 Plot the below figures with [locplot.py](https://github.com/JosephPVera/Localized-States/blob/main/locplot.py). The **locplot.py** script takes the sum of the 5 heaviest values (most contribution) ​​in each band per k-point (Energy versus sum), it also can be change for check the total contribution (tot) for each band per k-point (Energy versus tot) using the **--tot** tag. Once again, you can change the scale via **res = 0** or **res = vbm**.
 
-![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/eigenplot_localization.png)
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Guide/Figures/eigenplot_localization.png)
 
 Use the **--band** tag to include band numbers in the gap.
-![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/eigenplot_localization-band.png)
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Guide/Figures/eigenplot_localization-band.png)
 
 ### 2.3. IPR
 Inverse Participation Ratio (IPR) can also be used to plot the localized states. To obtain the plots, the **WAVECAR** is required. It is important to highlight that the script for this subsection is used from [VaspBandUnfolding](https://github.com/QijingZheng/VaspBandUnfolding/blob/master/vaspwfc.py), so it must download from there. **Note**: Simply download and copy it into the LSPD module; the other processing and plotting functions are already adapted.
 
 Once again, you can change the scale via **res = 0** or **res = vbm**, and print the band index using **--band** tag. On the other hand, If the calculations were performed using multiple k-points, the [ipr.py](https://github.com/JosephPVera/Localized-States/blob/main/ipr.py) script works by default. However, if the calculations were performed using only the gamma point, the **--gamma** tag must be used.
 
-![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/eigenplot_localization-IPR.png)   
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/tests/Guide/Figures/eigenplot_localization-IPR.png)   
 
 ### 2.4. Localized states
 Review in detail which atoms (indexes) contribute to the high localization of states at each band number in the gap with [localized.py](https://github.com/JosephPVera/Localized-States/blob/main/localized.py) (it can be extended by modifying VBM and CBM). Check the example [localized_Va_N1_2.dat](https://github.com/JosephPVera/Localized-States/blob/main/tests/localized_Va_N1_2.dat) file.

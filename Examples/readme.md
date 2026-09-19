@@ -22,7 +22,7 @@ After performing all the calculations, use the [primitive.py](https://github.com
 After performing all the calculations, use the [chem_pot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/chem_pot.py) script to extract the **compound**, **total energy**, **number of atoms**, and **total energy per atom**. This information is saved in a **chem_pot.json** file.
 
 ### 1.2.3. Defect folder
-After performing all the calculations, the following steps must be carried out for each folder. For example, in the [N_C-V_C_-1](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/diamond/PBE/PD/defect/N_C-V_C_-1) folder:
+After performing all the calculations, the following steps must be carried out for each folder (**N_C-V_C_-3**, **N_C-V_C_-2**, **N_C-V_C_-1**, **N_C-V_C_0**, **N_C-V_C_1**, and **N_C-V_C_2**), except for the **perfect** folder. For example, in the [N_C-V_C_-1](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/diamond/PBE/PD/defect/N_C-V_C_-1) folder:
 
 - Use the [corrections.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/corrections.py) script to extract the **charge state**, **lattice parameters**, **dielectric tensor**, **defect coordinates**, **point group for the defect**, **energy corrections**, and **potentials**. This information is saved in a **correction.json** file.
 - Use the [corrections_plot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/corrections_plot.py) script to plot the potential alignment.
@@ -41,7 +41,7 @@ After performing all the calculations, the following steps must be carried out f
 
   ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/VASP/c-BN/HSE06/PD/defect/V_B-Si_B_-1/eigenplot_localization-IPR.png)
 
-- If the **WAVECAR** have been saved, use the
+- If the **WAVECAR** have been saved, use the [ks-orbital.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/ks-orbital.py) script to extract the wavefunction of a desired band at a given k-point and spin channel. Check the example in the [V_B-Si_B_0](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/c-BN/HSE06/PD/defect/V_B-Si_B_0) folder, where the wavefunctions, such as **wfc_s2_k1_b430_r.vasp**, **wfc_s2_k1_b431_r.vasp**, and so on, are saved.
 
 
 

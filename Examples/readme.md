@@ -48,7 +48,13 @@ After parsing all the folders, use the [sum_defects.py](https://github.com/Josep
 
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/VASP/diamond/PBE/PD/defect/formation_energy-1.png)
 
+## 1.3. ZPL folder
+After performing the calculations, extract the total energies of the ground and excited states and compute the Zero-Phonon Line (ZPL).
 
+## 1.4. CCD folder
+Copy the ground and excited state relaxed structures from the **ZPL folder** (**CONTCAR** files) and rename them **POSCAR_ground** and **POSCAR_excited**, respectively. Then, use the [ccd.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/ccd.py) script to interpolate intermediate structures between the ground and excited states. Once all the calculations have been performed, use the [ccd-plot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/ccd-plot.py) script to compute **ΔQ**, **ZPL**, **absorption and emission energy**, **anti-Stokes and Stokes shift**, **effective phonon modes**, **Huang-Rhys factor**, and **Debye-Waller factor**. This information is saved in a **ccd.dat** file. In addition, the Configuration Coordinate Diagram (CCD) is plotted.  
+
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/VASP/diamond/PBE/CCD/ccd.png)
 
 ---
 # 2. Quantum ESPRESSO software

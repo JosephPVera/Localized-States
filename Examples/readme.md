@@ -73,13 +73,24 @@ Check an example in the [CCD - diamond](https://github.com/JosephPVera/Localized
 ### 2.2.1. Primitive folder
 After performing all the calculations, use the [primitive.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/primitive.py) script with the **--qe** tag to extract the **VBM**, **CBM**, **gap**, and **dielectric tensor contributions**. This information is saved in a **primitive.json** file. Check an example in the [primitive - diamond](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/PD/primitive) folder.
 
+```bash
+primitive.py --qe
+```
+
 ### 2.2.2. Competing phases (cpd) folder
 After performing all the calculations, use the [chem_pot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/chem_pot.py) script with the **--qe** tag to extract the **compound**, **total energy**, **number of atoms**, and **total energy per atom**. This information is saved in a **chem_pot.json** file. Check an example in the [cpd - diamond](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/PD/cpd) folder.
+
+```bash
+chem_pot.py --qe
+```
 
 ### 2.2.3. Defect folder
 After performing all the calculations, the following steps must be carried out for each folder (**N_C-V_C_-3**, **N_C-V_C_-2**, **N_C-V_C_-1**, **N_C-V_C_0**, **N_C-V_C_1**, and **N_C-V_C_2**), except for the **perfect** folder. For example, in the [N_C-V_C_-1](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/PD/defect/N_C-V_C_-1) folder:
 
 - Use the [corrections.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/corrections.py) script with the **--qe** tag to extract the **charge state**, **lattice parameters**, **dielectric tensor**, **defect coordinates**, **point group for the defect**, **energy corrections**, and **potentials**. This information is saved in a **correction.json** file. This script works together with the [efnv_corrections.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/efnv_corrections.py) script.
+  ```bash
+  corrections.py --qe
+  ```
 
 - Use the [corrections_plot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/corrections_plot.py) script to plot the potential alignment. This script works together with the [efnv_corrections.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/efnv_corrections.py) script.
   
@@ -103,8 +114,15 @@ After performing all the calculations, the following steps must be carried out f
   
 - If the **wfcdw1.dat** and **wfcup1.dat** files have been saved in the **tmp/*.save** folder, the wavefunction of a desired band at a given k-point and spin channel can be extracted using the native Quantum ESPRESSO tools, as shown in the [wfc](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/PD/defect/N_C-V_C_-1/wfc) folder. Check the example in the [wfc-430-dw](https://github.com/JosephPVera/Localized-States/tree/main/Examples/QE/PBE/PD/defect/N_C-V_C_-1/wfc/wfc-430-dw) folder, where the wavefunctions are saved in the **wfc_band430_dw.xsf** file. This file can be used to determine the symmetry of the wavefunction for a given orbital with an assigned band number using the point group of the defect site, by inspecting how the isosurface transforms under the symmetry operations of that point group. For this purpose, the [point_groups.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/point_groups.py) script with the **--qe** tag can be used, which works together with the [point_groups_lib.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/point_groups_lib.py) script.
 
+  ```bash
+  point_groups.py --qe wfc-431-dw/wfc_band431_dw.xsf wfc-432-dw/wfc_band432_dw.xsf
+  ```
       
 After parsing all the folders, use the [sum_defects.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/sum_defects.py) script with the **--qe** tag to collect all the information into a **summary_defects.json** file. Finally, plot the formation energy diagram using the [formation_energy.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/formation_energy.py) script.
+
+```bash
+sum_defects.py --qe
+```
 
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/QE/PBE/PD/defect/formation_energy-1.png)
 
@@ -116,6 +134,14 @@ After performing the calculations, extract the total energies of the ground and 
 
 ## 2.4. CCD folder
 Copy the ground and excited state relaxed structures from the **ZPL folder** (**.in** files from **scf** folder) and rename them **ground_state.in** and **excited_state.in**, respectively. Then, use the [ccd.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/ccd.py) script with the **--qe** tag to interpolate intermediate structures between the ground and excited states. Once all the calculations have been performed, use the [ccd-plot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/ccd-plot.py) script with the **--qe** tag to compute **ΔQ**, **ZPL**, **absorption and emission energy**, **anti-Stokes and Stokes shift**, **effective phonon modes**, **Huang-Rhys factor**, and **Debye-Waller factor**. This information is saved in a **ccd.dat** file. In addition, the Configuration Coordinate Diagram (CCD) is plotted.  
+
+```bash
+ccd.py --qe
+```
+
+```bash
+ccd-plot.py --qe
+```
 
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/QE/PBE/CCD/PBE/ccd.png)
 

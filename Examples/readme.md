@@ -44,8 +44,9 @@ After performing all the calculations, the following steps must be carried out f
 - If the **WAVECAR** have been saved, use the [ks-orbital.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/ks-orbital.py) script to extract the wavefunction of a desired band at a given k-point and spin channel. Check the example in the [V_B-Si_B_0](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/c-BN/HSE06/PD/defect/V_B-Si_B_0) folder, where the wavefunctions, such as **wfc_s2_k1_b430_r.vasp**, **wfc_s2_k1_b431_r.vasp**, and so on, are saved. These files can be used to determine the symmetry of the wavefunction for a given orbital with an assigned band number using the point group of the defect site, by inspecting how the isosurface transforms under the symmetry operations of that point group. For this purpose, the [point_groups.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/point_groups.py) script can be used, which works together with the [point_groups_lib.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/point_groups_lib.py) script.
 
 
-Finally, after parsing all the folders, use the [sum_defects.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/sum_defects.py) script to collect all the information into a **summary_defects.json** file.
+After parsing all the folders, use the [sum_defects.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/sum_defects.py) script to collect all the information into a **summary_defects.json** file. Finally, plot the formation energy diagram using the [formation_energy.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/formation_energy.py) script.
 
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/VASP/diamond/PBE/PD/defect/formation_energy-1.png)
 
 
 

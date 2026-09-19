@@ -10,7 +10,7 @@ So far, these scripts have not been implemented in the LSPD package.
 # 1. VASP software
 ---
 
-## 1.1. Tree folder
+## 1.1. Folder tree
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/Figures/vasp.png)
 
 
@@ -22,5 +22,5 @@ So far, these scripts have not been implemented in the LSPD package.
 # 2. Quantum ESPRESSO software
 ---
 
-## 2.1. Tree folder
+## 2.1. Folder tree
 ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/Figures/qe.png)

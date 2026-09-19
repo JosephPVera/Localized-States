@@ -24,7 +24,16 @@ After performing all the calculations, use the [chem_pot.py](https://github.com/
 ### 1.2.3. Defect folder
 After performing all the calculations, the following steps must be carried out for each folder. For example, in the [N_C-V_C_-1](https://github.com/JosephPVera/Localized-States/tree/main/Examples/VASP/diamond/PBE/PD/defect/N_C-V_C_-1) folder:
 
-[-] Use the [corrections.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/corrections.py) script to extract the **charge state**, **lattice parameters**, **dielectric tensor**, **defect coordinates**, **point group for the defect**, **energy corrections**, and **potentials**. This information is saved in a **correction.json** file
+- Use the [corrections.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/corrections.py) script to extract the **charge state**, **lattice parameters**, **dielectric tensor**, **defect coordinates**, **point group for the defect**, **energy corrections**, and **potentials**. This information is saved in a **correction.json** file.
+- Use the [corrections_plot.py](https://github.com/JosephPVera/Localized-States/blob/main/Extra-scripts/corrections_plot.py) script to plot the potential alignment.
+
+  ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/VASP/diamond/PBE/PD/defect/N_C-V_C_-1/correction_plot.png)
+  
+- Use the [eigenplot.py](https://github.com/JosephPVera/Localized-States/blob/main/eigenplot.py) script to plot the Kohn-Sham level diagram.
+  
+  ![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/VASP/diamond/PBE/PD/defect/N_C-V_C_-1/kohn-sham-states.png)
+  
+- Use the [locplot.py](https://github.com/JosephPVera/Localized-States/blob/main/locplot.py) script to plot the degree of localization using the Projected Density of States (PDOS).
 
 
 

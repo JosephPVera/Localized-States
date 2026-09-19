@@ -11,14 +11,16 @@ So far, these scripts have not been implemented in the LSPD package.
 ---
 
 ## 1.1. Tree folder
-![Alt text](https://github.com/JosephPVera/Guide-for-DFT-calculations/blob/main/Quantum-ESPRESSO/Primitive/Figures/QE_workflow_pbe.png)
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/Figures/vasp.png)
 
 
 ## 1.2. Convergence tests
-The first step in obtaining accurate results is to perform convergence tests for parameters such as the **energy cutoff for wavefunctions**, **energy cutoff for charge density**, and **k-point 
-mesh**. These parameters can be modified through the **ecutwfc** and **ecutrho** tags, as well as the **K_POINTS** section.  
+
 
 
 ---
 # 2. Quantum ESPRESSO software
 ---
+
+## 2.1. Tree folder
+![Alt text](https://github.com/JosephPVera/Localized-States/blob/main/Examples/Figures/qe.png)

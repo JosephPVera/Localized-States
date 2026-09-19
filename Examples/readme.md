@@ -4,11 +4,13 @@
 
 So far, these scripts have not been implemented in the LSPD package.
 
+**WARNING:** Only the inputs and outputs necessary to analyze the results are included here. If you wish to follow the steps required to perform the calculations, please check the [Guide-for-DFT-calculations](https://github.com/JosephPVera/Guide-for-DFT-calculations) repository.
+
 ---
 # 1. VASP software
 ---
 
-## 1.1. Workflow
+## 1.1. Tree folder
 ![Alt text](https://github.com/JosephPVera/Guide-for-DFT-calculations/blob/main/Quantum-ESPRESSO/Primitive/Figures/QE_workflow_pbe.png)
 
 
